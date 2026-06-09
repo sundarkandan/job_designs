@@ -162,25 +162,37 @@ useEffect(() => {
             </button>
           </div>
 
-          {/* POD 2: Desktop Center Dock */}
-          <div className={`hidden md:flex items-center h-14 px-2 rounded-2xl border backdrop-blur-md relative ${dark ? 'bg-zinc-950/80 border-[#eab308]' : 'bg-white/90 border-[#eab308]'}`}>
-            <div className="flex items-center gap-1 relative">
-              <span
-                className="absolute h-8 rounded-xl bg-[#eab308] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                style={{ left: `${pillStyle.left}px`, width: `${pillStyle.width}px` }}
-              />
-              {NAV_KEYS.map(key => (
-                <button
-                  key={key}
-                  ref={el => navTabsRef.current[key] = el}
-                  onClick={() => handleScroll(key)}
-                  className={`relative px-4 py-2 text-[11px] font-black uppercase tracking-widest rounded-xl z-10 ${activeSection === key ? 'text-black' : dark ? 'text-zinc-400' : 'text-zinc-600'}`}
-                >
-                  {t[key]}
-                </button>
-              ))}
-            </div>
-          </div>
+         {/* POD 2: Desktop Center Dock */}
+<div className={`hidden md:flex items-center h-14 px-2 rounded-2xl border backdrop-blur-xl transition-colors duration-300 relative shadow-lg ${
+  dark 
+    ? 'bg-zinc-900/60 border-zinc-800' 
+    : 'bg-white/60 border-zinc-200'
+}`}>
+  <div className="flex items-center gap-1 relative">
+    {/* Animated Active Pill */}
+    <span
+      className="absolute h-8 rounded-xl bg-[#eab308] shadow-[0_0_15px_rgba(234,179,8,0.4)] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
+      style={{ left: `${pillStyle.left}px`, width: `${pillStyle.width}px` }}
+    />
+    
+    {NAV_KEYS.map(key => (
+      <button
+        key={key}
+        ref={el => navTabsRef.current[key] = el}
+        onClick={() => handleScroll(key)}
+        className={`relative px-5 py-2 text-[11px] font-black uppercase tracking-widest rounded-xl z-10 transition-colors duration-300 ${
+          activeSection === key 
+            ? 'text-black' 
+            : dark 
+              ? 'text-zinc-400 hover:text-zinc-100' 
+              : 'text-zinc-600 hover:text-zinc-900'
+        }`}
+      >
+        {t[key]}
+      </button>
+    ))}
+  </div>
+</div>
 
           {/* POD 3: Controls */}
           <div className={`shrink-0 flex items-center h-14 gap-2 px-3 rounded-2xl border backdrop-blur-md ${dark ? 'bg-zinc-950/90 border-[#eab308]' : 'bg-white/95 border-[#eab308]'}`}>
