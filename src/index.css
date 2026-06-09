@@ -1,0 +1,26 @@
+@import "tailwindcss";
+.bento-card-container {
+  perspective: 1500px;
+}
+
+.bento-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  position: relative;
+}
+
+/* The shine layer */
+.bento-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.15), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.bento-card:hover::after {
+  opacity: 1;
+}
