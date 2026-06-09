@@ -237,7 +237,7 @@ export default function HeroSection({
         D ? 'bg-yellow-600/5' : 'bg-yellow-500/5'
       }`} />
 
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-6 lg:gap-12 items-center relative z-10">
         
         {/* Left Layout Pane Elements */}
         <div className="lg:col-span-5 space-y-4 text-center lg:text-left">
@@ -295,7 +295,8 @@ export default function HeroSection({
           style={{ animationDelay: '250ms' }}
           className="pro-animate-fade lg:col-span-7 w-full max-w-xl mx-auto"
         >
-          <div className={`rounded-2xl p-5 sm:p-6 shadow-2xl space-y-4 border ${
+          {/* OPTIMIZED: Adjusted card inner vertical padding and structure so form content sits higher */}
+          <div className={`rounded-2xl p-4 sm:p-5 shadow-2xl space-y-3.5 border ${
             D ? 'bg-zinc-950 border-zinc-900' : 'bg-white border-zinc-200/80'
           }`}>
             
@@ -311,7 +312,7 @@ export default function HeroSection({
                     key={mode}
                     type="button"
                     onClick={() => setTripType(mode)}
-                    className={`flex-1 py-2 text-[11px] font-bold uppercase tracking-widest rounded-lg transition-all duration-200 ${
+                    className={`flex-1 py-1.5 text-[11px] font-bold uppercase tracking-widest rounded-lg transition-all duration-200 ${
                       isActive
                         ? 'bg-amber-500 text-zinc-950 shadow-sm font-black'
                         : D
@@ -325,9 +326,9 @@ export default function HeroSection({
               })}
             </div>
 
-            <form onSubmit={onSubmit} className="space-y-4">
+            <form onSubmit={onSubmit} className="space-y-3.5">
               {/* Form Input Grid Fields */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <Field label={t.name} dark={D} style={{ animationDelay: '420ms' }} className="pro-animate-scale">
                   <User className="h-3.5 w-3.5 text-amber-500" />
                   <input type="text" name="name" required placeholder="Sundar Kandan" value={formData.name} onChange={onInputChange} className="bg-transparent w-full text-xs focus:outline-none font-medium text-current" />
@@ -374,50 +375,48 @@ export default function HeroSection({
               </div>
 
               {/* Car Selection Sub-Block */}
-             
-<div style={{ animationDelay: '740ms' }} className="pro-animate-scale space-y-1.5">
-  <label className="text-[9px] font-bold uppercase tracking-widest text-zinc-500">
-    {t.selectCar}
-  </label>
-  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-    {Object.entries(vehicles).map(([key, value], index) => (
-      <button
-        key={key}
-        type="button"
-        onClick={() => setSelectedCar(key)}
-        style={{ animationDelay: `${800 + index * 60}ms` }}
-        className={`pro-animate-scale p-2 rounded-xl text-center transition-all duration-200 flex flex-col items-center justify-between border hover:scale-[1.02] ${
-          selectedCar === key
-            ? 'border-amber-500 bg-amber-500/10'
-            : D
-              ? 'bg-zinc-900 border-zinc-800 hover:border-zinc-700'
-              : 'bg-zinc-50 border-zinc-200 hover:border-zinc-300'
-        }`}
-      >
-        <img src={value.slides[0]} alt={value.name.en} className="h-7 sm:h-8 w-auto object-contain pointer-events-none mb-1" />
-        <div>
-          {/* FIX: Access the name using the correct language key. 
-              Assuming 'lang' is passed as a prop, or use your existing 't' context 
-              or a global language state variable (e.g., 'currentLang'). */}
-          <div className="text-[9px] font-bold uppercase tracking-tight text-current">
-            {/* Replace 'en' with your actual current language variable */}
-            {value.name.en.split(' ')[1] || value.name.en}
-          </div>
-          <div className="text-[9px] text-amber-500 font-extrabold">₹{value.rate}/km</div>
-        </div>
-      </button>
-    ))}
-  </div>
-</div>
+              <div style={{ animationDelay: '740ms' }} className="pro-animate-scale space-y-1">
+                <label className="text-[9px] font-bold uppercase tracking-widest text-zinc-500">
+                  {t.selectCar}
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {Object.entries(vehicles).map(([key, value], index) => (
+                    <button
+                      key={key}
+                      type="button"
+                      onClick={() => setSelectedCar(key)}
+                      style={{ animationDelay: `${800 + index * 60}ms` }}
+                      className={`pro-animate-scale p-1.5 rounded-xl text-center transition-all duration-200 flex flex-col items-center justify-between border hover:scale-[1.02] ${
+                        selectedCar === key
+                          ? 'border-amber-500 bg-amber-500/10'
+                          : D
+                            ? 'bg-zinc-900 border-zinc-800 hover:border-zinc-700'
+                            : 'bg-zinc-50 border-zinc-200 hover:border-zinc-300'
+                      }`}
+                    >
+                      <img src={value.slides[0]} alt={value.name.en} className="h-7 sm:h-7 w-auto object-contain pointer-events-none mb-1" />
+                      <div>
+                        <div className="text-[9px] font-bold uppercase tracking-tight text-current">
+                          {value.name.en.split(' ')[1] || value.name.en}
+                        </div>
+                        <div className="text-[9px] text-amber-500 font-extrabold">₹{value.rate}/km</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-              {/* Action Submit Button */}
-              <button
-                type="submit"
-                style={{ animationDelay: '1050ms' }}
-                className="pro-animate-scale w-full py-3 rounded-xl font-black uppercase text-xs tracking-widest bg-gradient-to-r from-amber-500 to-yellow-400 text-zinc-950 flex items-center justify-center gap-2 shadow-lg hover:shadow-amber-500/10 transform hover:-translate-y-0.5 transition-all duration-200"
-              >
-                {t.estimate} <ArrowRight className="h-4 w-4" />
-              </button>
+              {/* FIXED BUTTON: Forced explicit solid background color with pure black text contrast inside structural layout buffer */}
+              <div className="pt-1.5 relative z-30">
+                <button
+                  type="submit"
+                  style={{ animationDelay: '1050ms' }}
+                  className="pro-animate-scale w-full py-3 rounded-xl font-black uppercase text-xs tracking-widest bg-[#eab308] hover:bg-[#facc15] text-black flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10 transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                >
+                  <span className="text-black font-black">{t.estimate}</span> 
+                  <ArrowRight className="h-4 w-4 stroke-[3] text-black" />
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -432,11 +431,11 @@ function Field({ label, dark, children, className = '', style }) {
       <label className="text-[9px] font-bold uppercase tracking-widest text-zinc-500">
         {label}
       </label>
-      <div className={`flex items-center gap-2 px-3 py-2 rounded-xl border transition-colors duration-200 focus-within:border-amber-500/40 ${
+      <div className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-colors duration-200 focus-within:border-amber-500/40 ${
         dark ? 'bg-zinc-900 border-zinc-800' : 'bg-zinc-100 border-zinc-200'
       }`}>
         {children}
       </div>
     </div>
   );
-} 
+}
