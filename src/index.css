@@ -61,3 +61,13 @@
 .yellow{
   color: #f59e0b;
 }
+.padding{
+  padding-bottom: 13%;
+}.perspective-container {
+  perspective: 1000px;
+}
+
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}

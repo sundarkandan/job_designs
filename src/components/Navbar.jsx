@@ -26,7 +26,23 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
   const isScrollingRef = useRef(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
+const [isContactVisible, setIsContactVisible] = useState(false);
 
+  useEffect(() => {
+    const contactSection = document.getElementById('contact');
+    if (!contactSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Hide if the contact section is in view
+        setIsContactVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 } // Adjust this if you want it to hide sooner/later
+    );
+
+    observer.observe(contactSection);
+    return () => observer.unobserve(contactSection);
+  }, []);
   // ── Draggable vertical position ──────────────────────────────────────────
   // ribbonY is stored as % of window height (0 = top, 100 = bottom)
   const [ribbonY, setRibbonY] = useState(50);          // default: 50% (center)
@@ -281,10 +297,9 @@ useEffect(() => {
         </div>
       </nav>
 
-      {/* ── FLOATING BUTTONS — visible only when mobile nav is CLOSED ──────── */}
-   {/* ── FLOATING BUTTONS ───────────────────── */}
+{/* ── FLOATING BUTTONS — visible only when mobile nav is CLOSED and NOT on contact section ──────── */}
 <AnimatePresence>
-  {!navOpen && (
+  {!navOpen && !isContactVisible && (
     <motion.div
       key="floating-buttons"
       initial={{ opacity: 0, scale: 0.7, y: 20 }}
@@ -321,12 +336,12 @@ useEffect(() => {
         transition={{ 
           duration: 2, 
           repeat: Infinity, 
-          repeatDelay: 3, // Pauses for 3 seconds between shakes
+          repeatDelay: 3, 
           ease: "easeInOut" 
         }}
         className="p-3 rounded-full bg-amber-500 text-zinc-950 shadow-2xl hover:bg-amber-400"
       >
-        <Phone className="h-5 w-5 animate-pop stroke-[2.5]" />
+        <Phone className="h-5 w-5 stroke-[2.5]" />
       </motion.a>
     </motion.div>
   )}
