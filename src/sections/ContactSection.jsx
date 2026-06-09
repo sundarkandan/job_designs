@@ -1,6 +1,6 @@
 import { Phone, MapPin, Clock, CheckCircle, MessageCircle } from 'lucide-react';
 import { WHATSAPP_NUMBER, PHONE_NUMBER } from '../constants/vehicles';
-
+import { motion } from 'framer-motion';
 export default function ContactSection({ dark, t }) {
   const D = dark;
 
@@ -40,23 +40,41 @@ export default function ContactSection({ dark, t }) {
           </div>
         </div>
 
-        {/* ── Right: CTA Buttons ── */}
-        <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-3 w-full">
-          <a
-            href={`tel:${PHONE_NUMBER}`}
-            className="flex-1 py-3.5 text-center rounded-xl font-black uppercase text-xs tracking-widest bg-amber-500 text-zinc-950 flex items-center justify-center gap-2 hover:bg-amber-400 transition-colors duration-300 shadow-lg"
-          >
-            <Phone className="h-4 w-4" /> {t.callNow}
-          </a>
-          <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}`}
-            target="_blank"
-            rel="noreferrer"
-            className="flex-1 py-3.5 text-center rounded-xl font-black uppercase text-xs tracking-widest bg-zinc-900 border border-zinc-800 text-emerald-400 flex items-center justify-center gap-2 hover:bg-zinc-800 transition-colors duration-300 shadow-lg"
-          >
-            <MessageCircle className="h-4 w-4" /> {t.whatsappDesk}
-          </a>
-        </div>
+  {/* ── Right: CTA Buttons ── */}
+<div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-3 w-full">
+  
+  {/* Call Button: Horizontal Shake Animation */}
+  <motion.a
+    href={`tel:${PHONE_NUMBER}`}
+    
+    className= "shake-animation flex-1 py-3.5 text-center rounded-xl font-black uppercase text-xs tracking-widest bg-amber-500 text-zinc-950 flex items-center justify-center gap-2 hover:bg-amber-400 transition-colors duration-300 shadow-lg"
+  >
+    <Phone className="h-4 w-4" /> {t.callNow}
+  </motion.a>
+
+  {/* WhatsApp Button: Badge Pulse Animation */}
+  <motion.a
+    href={`https://wa.me/${WHATSAPP_NUMBER}`}
+    target="_blank"
+    rel="noreferrer"
+    animate={{ 
+      scale: [1, 1.03, 1],
+      boxShadow: [
+        "0 0 0 0 rgba(52, 211, 153, 0.4)",
+        "0 0 0 10px rgba(52, 211, 153, 0)",
+        "0 0 0 0 rgba(52, 211, 153, 0)"
+      ]
+    }}
+    transition={{ 
+      duration: 2, 
+      repeat: Infinity, 
+      ease: "easeInOut" 
+    }}
+    className="flex-1 py-3.5 text-center rounded-xl font-black uppercase text-xs tracking-widest bg-zinc-900 border border-zinc-800 text-emerald-400 flex items-center justify-center gap-2 hover:bg-zinc-800 transition-colors duration-300 shadow-lg"
+  >
+    <MessageCircle className="h-4 w-4" /> {t.whatsappDesk}
+  </motion.a>
+</div>
 
       </div>
     </section>

@@ -2,13 +2,46 @@
 .bento-card-container {
   perspective: 1500px;
 }
+/* For Chrome, Safari, and Edge */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
+/* For Firefox */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+/* If using standard CSS */
+@keyframes shake-with-pause {
+  /* The shaking happens in the first 0.5s */
+  0%, 10%, 20%, 30%, 40%, 50% { transform: translateX(0); }
+  5% { transform: translateX(-5px); }
+  15% { transform: translateX(5px); }
+  25% { transform: translateX(-5px); }
+  35% { transform: translateX(5px); }
+  45% { transform: translateX(0); }
+  
+  /* The "gap" or wait happens from 50% to 100% (static) */
+  50%, 100% { transform: translateX(0); }
+}
+
+.shake-animation {
+  /* Total duration 2s: 1s of shaking + 1s of waiting */
+  animation: shake-with-pause 2s ease-in-out infinite;
+}
+/* For IE and Edge Legacy */
+.no-scrollbar {
+  -ms-overflow-style: none;
+}
 .bento-card {
   transform-style: preserve-3d;
   transition: transform 0.1s ease-out;
   position: relative;
 }
-
+/* Add this to your main layout or page wrapper */
+.page-container {
+  padding-bottom: 100px; /* Ensures space for the fixed mobile dock */
+}
 /* The shine layer */
 .bento-card::after {
   content: "";
@@ -23,4 +56,8 @@
 
 .bento-card:hover::after {
   opacity: 1;
+}
+
+.yellow{
+  color: #f59e0b;
 }

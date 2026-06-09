@@ -5,7 +5,7 @@ import { translations } from './constants/translations';
 import { vehicles } from './constants/vehicles';
 
 import Navbar from './components/Navbar';
-import FloatingButtons from './components/Floatingbuttons';
+
 import EstimateModal from './components/EstimateModal';
 
 import HeroSection from './sections/HeroSection';
@@ -242,7 +242,7 @@ export default function App() {
       </div>
 
       {/* ── Overlays ── */}
-      <FloatingButtons />
+      
       <EstimateModal
         modal={estimateModal}
         selectedCar={selectedCar}

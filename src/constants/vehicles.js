@@ -59,39 +59,39 @@ export const vehicles = {
 
 export const popularDestinations = [
   {
-    title: { en: 'Chennai ⭢ Coimbatore', ta: 'சென்னை ⭢ கோயம்புத்தூர்' },
+    title: { en: 'Chennai (To) Coimbatore', ta: 'சென்னை (To) கோயம்புத்தூர்' },
     img: Esha
   },
   {
-    title: { en: 'Chennai ⭢ Salem', ta: 'சென்னை ⭢ சேலம்' },
+    title: { en: 'Chennai (To) Salem', ta: 'சென்னை (To) சேலம்' },
     img: Salem,
   },
   {
-    title: { en: 'Chennai ⭢ Trichy', ta: 'சென்னை ⭢ திருச்சி' },
+    title: { en: 'Chennai (To) Trichy', ta: 'சென்னை (To) திருச்சி' },
     img: tiruchy,
   }, 
   {
-    title: { en: 'Chennai ⭢ Pondicherry', ta: 'சென்னை ⭢ பாண்டிச்சேரி' },
+    title: { en: 'Chennai (To) Pondicherry', ta: 'சென்னை (To) பாண்டிச்சேரி' },
     img: PondyCherry,
   },
   {
-    title: { en: 'Chennai ⭢ Bangalore', ta: 'சென்னை ⭢ பெங்களூரு' },
+    title: { en: 'Chennai (To) Bangalore', ta: 'சென்னை (To) பெங்களூரு' },
     img: Banglore,
   },
   {
-    title: { en: 'Chennai ⭢ Madurai', ta: 'சென்னை ⭢ மதுரை' },
+    title: { en: 'Chennai (To) Madurai', ta: 'சென்னை (To) மதுரை' },
     img: Madurai,
   }, 
   {
-    title: { en: 'Chennai ⭢ Tiruvannamalai', ta: 'சென்னை ⭢ திருவண்ணாமலை' },
+    title: { en: 'Chennai (To) Tiruvannamalai', ta: 'சென்னை (To) திருவண்ணாமலை' },
     img: Tiruvannamalai,
   },
   {
-    title: { en: 'Chennai ⭢ Tirupati', ta: 'சென்னை ⭢ திருப்பதி' },
+    title: { en: 'Chennai (To) Tirupati', ta: 'சென்னை (To) திருப்பதி' },
     img: Tiruppathi,
   },
   {
-    title: { en: 'Chennai ⭢ Vellore', ta: 'சென்னை ⭢ வேலூர்' },
+    title: { en: 'Chennai (To) Vellore', ta: 'சென்னை (To) வேலூர்' },
     img: vellore,
   }
 ];
