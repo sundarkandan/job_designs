@@ -1,34 +1,20 @@
 // ─────────────────────────────────────────────────────────────────
 //  translations.js  —  SEO-Optimized Multi-language Content
-//  Taxi Service: Trending Drop Taxi | Tamil Nadu Outstation
-//  SEO Strategy:
-//    • Keyword-rich headings & descriptions (long-tail outstation queries)
-//    • Hreflang-ready lang codes (en, ta)
-//    • Structured data strings for JSON-LD (LocalBusiness + FAQPage)
-//    • Meta title / description / keywords per lang
-//    • Open Graph strings
+//  Languages: English (en), Tamil (ta), Hindi (hi),
+//             Kannada (kn), Malayalam (ml), Telugu (te)
 // ─────────────────────────────────────────────────────────────────
 
 export const seoMeta = {
   en: {
-    // ── <title> tag ──────────────────────────────────────────────
     pageTitle: 'Trending Drop Taxi | Outstation Cab Service Tamil Nadu – ₹16/km',
-
-    // ── <meta name="description"> ────────────────────────────────
     metaDescription:
       'Book outstation taxi in Tamil Nadu from ₹16/km. No return fare, no hidden charges. Sedan, SUV & Innova cabs from Coimbatore, Tirunelveli, Chennai, Madurai. 24/7 booking.',
-
-    // ── <meta name="keywords"> ───────────────────────────────────
     metaKeywords:
       'outstation taxi Tamil Nadu, drop taxi Coimbatore, one way cab Chennai to Madurai, outstation cab Tirunelveli, Coimbatore to Bangalore taxi, no return fare taxi, drop taxi service TN, affordable outstation cab, Trending Drop Taxi',
-
-    // ── Open Graph ───────────────────────────────────────────────
     ogTitle: 'Trending Drop Taxi – No Return Fare | Tamil Nadu Outstation Cab',
     ogDescription:
       'Flat ₹16/km outstation cab across Tamil Nadu. Zero surge pricing. Verified chauffeurs. Book online instantly via WhatsApp.',
     ogType: 'website',
-
-    // ── Structured Data: LocalBusiness (JSON-LD) ─────────────────
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'TaxiService',
@@ -54,8 +40,6 @@ export const seoMeta = {
         reviewCount: '500',
       },
     },
-
-    // ── FAQ Structured Data (boosts rich results) ────────────────
     faqStructuredData: {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
@@ -99,22 +83,71 @@ export const seoMeta = {
       'தமிழ்நாடு முழுவதும் ₹16/கிமீ நிலையான கட்டணம். கூடுதல் கட்டணங்கள் இல்லை. சரிபார்க்கப்பட்ட ஓட்டுநர்கள். வாட்ஸ்அப் மூலம் உடனே முன்பதிவு செய்யுங்கள்.',
     ogType: 'website',
   },
+
+  hi: {
+    pageTitle: 'ट्रेंडिंग ड्रॉप टैक्सी | तमिलनाडु आउटस्टेशन कैब सेवा – ₹16/किमी',
+    metaDescription:
+      'तमिलनाडु में ₹16/किमी से आउटस्टेशन टैक्सी बुक करें। कोई रिटर्न किराया नहीं, कोई छिपा शुल्क नहीं। 24/7 बुकिंग।',
+    metaKeywords:
+      'आउटस्टेशन टैक्सी तमिलनाडु, ड्रॉप टैक्सी, वन वे कैब, ट्रेंडिंग ड्रॉप टैक्सी',
+    ogTitle: 'ट्रेंडिंग ड्रॉप टैक्सी – कोई रिटर्न किराया नहीं | तमिलनाडु',
+    ogDescription:
+      'तमिलनाडु में ₹16/किमी फ्लैट दर पर कैब। कोई सर्ज नहीं। सत्यापित ड्राइवर। व्हाट्सएप से बुक करें।',
+    ogType: 'website',
+  },
+
+  kn: {
+    pageTitle: 'ಟ್ರೆಂಡಿಂಗ್ ಡ್ರಾಪ್ ಟ್ಯಾಕ್ಸಿ | ತಮಿಳುನಾಡು ಔಟ್‌ಸ್ಟೇಷನ್ ಕ್ಯಾಬ್ ಸೇವೆ – ₹16/ಕಿಮೀ',
+    metaDescription:
+      'ತಮಿಳುನಾಡಿನಲ್ಲಿ ₹16/ಕಿಮೀ ನಿಂದ ಔಟ್‌ಸ್ಟೇಷನ್ ಟ್ಯಾಕ್ಸಿ ಬುಕ್ ಮಾಡಿ. ರಿಟರ್ನ್ ಶುಲ್ಕ ಇಲ್ಲ, ಗುಪ್ತ ಶುಲ್ಕಗಳಿಲ್ಲ. 24/7 ಬುಕಿಂಗ್.',
+    metaKeywords:
+      'ಔಟ್‌ಸ್ಟೇಷನ್ ಟ್ಯಾಕ್ಸಿ ತಮಿಳುನಾಡು, ಡ್ರಾಪ್ ಟ್ಯಾಕ್ಸಿ, ವನ್ ವೇ ಕ್ಯಾಬ್, ಟ್ರೆಂಡಿಂಗ್ ಡ್ರಾಪ್ ಟ್ಯಾಕ್ಸಿ',
+    ogTitle: 'ಟ್ರೆಂಡಿಂಗ್ ಡ್ರಾಪ್ ಟ್ಯಾಕ್ಸಿ – ರಿಟರ್ನ್ ಶುಲ್ಕ ಇಲ್ಲ | ತಮಿಳುನಾಡು',
+    ogDescription:
+      'ತಮಿಳುನಾಡಿನಾದ್ಯಂತ ₹16/ಕಿಮೀ ಫ್ಲಾಟ್ ದರ ಕ್ಯಾಬ್. ಸರ್ಜ್ ಇಲ್ಲ. ಪರಿಶೀಲಿತ ಚಾಲಕರು.',
+    ogType: 'website',
+  },
+
+  ml: {
+    pageTitle: 'ട്രെൻഡിംഗ് ഡ്രോപ്പ് ടാക്സി | തമിഴ്‌നാട് ഔട്ട്‌സ്റ്റേഷൻ ക്യാബ് സേവനം – ₹16/കിമി',
+    metaDescription:
+      'തമിഴ്‌നാട്ടിൽ ₹16/കിമി മുതൽ ഔട്ട്‌സ്റ്റേഷൻ ടാക്സി ബുക്ക് ചെയ്യൂ. റിട്ടേൺ ചാർജ് ഇല്ല, മറഞ്ഞ ചാർജുകൾ ഇല്ല. 24/7 ബുക്കിംഗ്.',
+    metaKeywords:
+      'ഔട്ട്‌സ്റ്റേഷൻ ടാക്സി തമിഴ്‌നാട്, ഡ്രോപ്പ് ടാക്സി, വൺ വേ ക്യാബ്, ട്രെൻഡിംഗ് ഡ്രോപ്പ് ടാക്സി',
+    ogTitle: 'ട്രെൻഡിംഗ് ഡ്രോപ്പ് ടാക്സി – റിട്ടേൺ ചാർജ് ഇല്ല | തമിഴ്‌നാട്',
+    ogDescription:
+      'തമിഴ്‌നാട്ടിലുടനീളം ₹16/കിമി ഫ്ലാറ്റ് നിരക്ക്. സർജ് ഇല്ല. പരിശോധിച്ച ഡ്രൈവർമാർ.',
+    ogType: 'website',
+  },
+
+  te: {
+    pageTitle: 'ట్రెండింగ్ డ్రాప్ టాక్సీ | తమిళనాడు అవుట్‌స్టేషన్ క్యాబ్ సేవ – ₹16/కి.మీ',
+    metaDescription:
+      'తమిళనాడులో ₹16/కి.మీ నుండి అవుట్‌స్టేషన్ టాక్సీ బుక్ చేయండి. రిటర్న్ ఛార్జ్ లేదు, దాచిన ఛార్జీలు లేవు. 24/7 బుకింగ్.',
+    metaKeywords:
+      'అవుట్‌స్టేషన్ టాక్సీ తమిళనాడు, డ్రాప్ టాక్సీ, వన్ వే క్యాబ్, ట్రెండింగ్ డ్రాప్ టాక్సీ',
+    ogTitle: 'ట్రెండింగ్ డ్రాప్ టాక్సీ – రిటర్న్ ఛార్జ్ లేదు | తమిళనాడు',
+    ogDescription:
+      'తమిళనాడు అంతటా ₹16/కి.మీ ఫ్లాట్ రేటు. సర్జ్ లేదు. వెరిఫైడ్ డ్రైవర్లు.',
+    ogType: 'website',
+  },
 };
 
 // ─────────────────────────────────────────────────────────────────
-//  UI Translations (keyword-enriched for on-page SEO)
+//  UI Translations
 // ─────────────────────────────────────────────────────────────────
 export const translations = {
+  // ─────────────────────── ENGLISH ─────────────────────────────
   en: {
-    // ── Nav ──────────────────────────────────────────────────────
     home: 'Home',
     about: 'About Us',
     tariff: 'Tariff',
     destinations: 'Top Destinations',
     reviews: 'Reviews',
     contact: 'Contact',
+    faq: 'FAQ',
+    servicesNav: 'Services',
 
-    // ── Form Labels ──────────────────────────────────────────────
     oneWay: 'One Way',
     roundTrip: 'Round Trip',
     name: 'Your Name',
@@ -129,19 +162,15 @@ export const translations = {
     estimate: 'Get Instant Fare Estimate',
     noReturn: 'No Return Fare',
 
-    // ── Hero ─────────────────────────────────────────────────────
-    // SEO: Primary H1 keyword target — "outstation taxi Tamil Nadu"
     subtitle: 'Premium Outstation Cab Service – Tamil Nadu',
     mainTitle: 'Outstation Taxi Tamil Nadu',
     desc: 'No return fare. No hidden charges. Flat ₹16/km outstation cab service across Tamil Nadu — Coimbatore, Chennai, Madurai, Tirunelveli & beyond. Verified professional chauffeurs, 24/7.',
 
-    // ── Stats ────────────────────────────────────────────────────
     callNow: 'Call Now',
     activeRides: 'Rides Daily',
     cities: 'Cities Covered',
     rating: 'Customer Rating',
 
-    // ── Estimate Modal ───────────────────────────────────────────
     estTitle: 'Outstation Fare Estimate',
     totalEst: 'Estimated Fare',
     distanceNote:
@@ -149,49 +178,49 @@ export const translations = {
     confirmWhatsApp: 'Confirm Booking via WhatsApp',
     close: 'Close',
 
-    // ── Tariff Section ───────────────────────────────────────────
-    // SEO: "transparent taxi tariff Tamil Nadu", "no surge outstation"
+    services: {
+      drop: { title: 'Drop Service', desc: 'One-way trips without return fare. Pay only for the distance you travel.' },
+      outstation: { title: 'Outstation Taxi', desc: 'Comfortable rides for long-distance travel across Tamil Nadu and nearby states.' },
+      roundtrip: { title: 'Round Trip', desc: 'Two-way bookings with the same driver and car. Ideal for short visits or business.' },
+      airport: { title: 'Airport Transfer', desc: 'Reliable pickup and drop from major airports—Chennai, Coimbatore, Madurai & more.' },
+      hourly: { title: 'Hourly Rentals', desc: 'Hire a cab with driver for city use on hourly basis. Perfect for meetings or errands.' },
+      wedding: { title: 'Wedding Taxi Service', desc: 'Multiple car options for guests, bride/groom pickup, and family transport.' },
+      corporate: { title: 'Corporate Travel', desc: 'Taxi solutions for offices, business travellers, and company tie-ups.' },
+      temple: { title: 'Temple Tours', desc: 'Fixed-rate packages for Tirupati, Rameswaram, Palani, Madurai and more.' },
+      hill: { title: 'Hill Station Rides', desc: 'Safe and experienced drivers for trips to Ooty, Kodaikanal, Yercaud, etc.' },
+      pet: { title: 'Pet-Friendly Taxi', desc: 'Dedicated space and support for transporting pets safely and comfortably.' },
+      group: { title: 'Group Taxi / MUVs', desc: '6–7 seater options for family or group travel with extra luggage capacity.' },
+      senior: { title: 'Senior Citizen Travel', desc: 'Polite, patient drivers and special assistance for elderly passengers.' },
+    },
+
     transparentTariff: 'Transparent Outstation Tariff',
-    tariffSub:
-      'Flat per-km pricing across Tamil Nadu. Zero surge. Zero hidden fees. One-way outstation fare only — no return charges.',
+    tariffSub: 'Flat per-km pricing across Tamil Nadu. Zero surge. Zero hidden fees. One-way outstation fare only — no return charges.',
     passengers: 'Passengers',
     luggage: 'Luggage',
     extraCharges: 'Driver Bata & Toll Extra',
 
-    // ── Features ─────────────────────────────────────────────────
     whyChooseUs: 'Why Choose Trending Drop Taxi',
     servicesTitle: 'Premium Cab Features',
-    featuresSub:
-      'Crafting elite outstation travel experiences for corporate and leisure trips across South India.',
-    featTitle1: 'Vetted Chauffeur Network',
-    featDesc1:
-      'Background-checked, professionally trained drivers certified for long-distance outstation trips across Tamil Nadu and South India.',
-    featTitle2: 'Real-Time Live Dispatch',
-    featDesc2:
-      'GPS-tracked fleet with live dispatch for guaranteed on-time pickups — every outstation trip, every time.',
-    featTitle3: 'Zero Surge Guarantee',
-    featDesc3:
-      'Flat per-km rate guaranteed even during peak season, festivals, and holidays. What you estimate is what you pay.',
+    featuresSub: 'Crafting elite outstation travel experiences for corporate and leisure trips across South India.',
+    featTitle1: 'Select Your Ride',
+    featDesc1: 'Explore our diverse selection of high-end vehicles, choose your preferred pickup and return dates, and select a location that best fits your needs.',
+    featTitle2: 'Book And Confirm',
+    featDesc2: 'Explore our diverse selection of high-end vehicles, choose your preferred pickup and return dates, and select a location that best fits your needs.',
+    featTitle3: 'Book And Enjoy',
+    featDesc3: 'Explore our diverse selection of high-end vehicles, choose your preferred pickup and return dates, and select a location that best fits your needs.',
     execStandard: 'Executive Standard',
     mechSanitation: 'Deep-Cleaned & Serviced Cabs',
-    mechDesc:
-      'Every outstation cab undergoes a multi-point inspection before departure — AC, tyres, interiors verified.',
+    mechDesc: 'Every outstation cab undergoes a multi-point inspection before departure — AC, tyres, interiors verified.',
 
-    // ── Destinations ─────────────────────────────────────────────
-    // SEO: "popular outstation routes Tamil Nadu", "drop taxi routes"
     destTitle: 'Popular Outstation Routes',
-    destSub:
-      'Most-booked one-way drop taxi routes across Tamil Nadu and South India. Flat-rate no-return-fare cab service.',
+    destSub: 'Most-booked one-way drop taxi routes across Tamil Nadu and South India. Flat-rate no-return-fare cab service.',
+    popularRoutesTitle: 'Top Tracks',
 
-    // ── Reviews ──────────────────────────────────────────────────
     reviewTitle: 'Customer Reviews',
-    reviewSub:
-      "What business and leisure travelers say about Trending Drop Taxi — Tamil Nadu's trusted outstation cab service.",
+    reviewSub: "What business and leisure travelers say about Trending Drop Taxi — Tamil Nadu's trusted outstation cab service.",
 
-    // ── Contact ──────────────────────────────────────────────────
     contactTitle: 'Book Your Outstation Cab',
-    contactSub:
-      'Available 24/7 for outstation bookings, corporate travel arrangements, and immediate dispatch across Tamil Nadu.',
+    contactSub: 'Available 24/7 for outstation bookings, corporate travel arrangements, and immediate dispatch across Tamil Nadu.',
     contactHeadingPart1: 'Book Corporate',
     contactHeadingPart2: 'or Personal',
     contactHeadingAccent: 'Outstation Trips',
@@ -200,46 +229,30 @@ export const translations = {
     verifiedAgency: 'Verified Commercial Cab Agency',
     whatsappDesk: 'WhatsApp Booking Desk',
 
-    // ── Footer ───────────────────────────────────────────────────
     quickLinks: 'Quick Links',
     contactInfo: 'Contact Info',
     rights: 'All Rights Reserved. Trending Drop Taxi – Premium Outstation Cab Service, Tamil Nadu.',
-    brandFooterDesc:
-      'Trending Drop Taxi offers premium outstation cab services across Tamil Nadu with flat-rate per-km pricing, no return fare, and verified professional chauffeurs.',
-    footerAddress:
-      'Main Dispatch Hub\nCoimbatore Junction, Tamil Nadu – 641001\nEmail: ops@trendingtaxi.in',
+    brandFooterDesc: 'Trending Drop Taxi offers premium outstation cab services across Tamil Nadu with flat-rate per-km pricing, no return fare, and verified professional chauffeurs.',
+    footerAddress: 'Main Dispatch Hub\nCoimbatore Junction, Tamil Nadu – 641001\nEmail: ops@trendingtaxi.in',
 
-    // ── Reviews Data ─────────────────────────────────────────────
     reviewsData: [
-      {
-        name: 'Dr. Anand Gopalan',
-        route: 'Chennai to Madurai',
-        text: 'Excellent outstation cab experience. The car was immaculate and the driver had superb knowledge of the highway route. No hidden charges — exactly as quoted.',
-      },
-      {
-        name: 'Meera Krishnan',
-        route: 'Coimbatore to Bangalore',
-        text: 'The one-way fare saved me nearly 40% compared to other outstation services. Transparent billing, no return fare — highly recommended for regular travelers.',
-      },
-      {
-        name: 'S. Ranganathan',
-        route: 'Tirunelveli to Chennai',
-        text: 'Professional outstation taxi service. The online estimate matched the final invoice to the rupee. Will book again for all my Tamil Nadu trips.',
-      },
+      { name: 'Dr. Anand Gopalan', route: 'Chennai to Madurai', text: 'Excellent outstation cab experience. The car was immaculate and the driver had superb knowledge of the highway route. No hidden charges — exactly as quoted.' },
+      { name: 'Meera Krishnan', route: 'Coimbatore to Bangalore', text: 'The one-way fare saved me nearly 40% compared to other outstation services. Transparent billing, no return fare — highly recommended for regular travelers.' },
+      { name: 'S. Ranganathan', route: 'Tirunelveli to Chennai', text: 'Professional outstation taxi service. The online estimate matched the final invoice to the rupee. Will book again for all my Tamil Nadu trips.' },
     ],
   },
 
-  // ─────────────────────────────────────────────────────────────
+  // ─────────────────────── TAMIL ───────────────────────────────
   ta: {
-    // ── Nav ──────────────────────────────────────────────────────
     home: 'முகப்பு',
     about: 'எங்களைப் பற்றி',
     tariff: 'கட்டணங்கள்',
     destinations: 'பிரபலமான இலக்குகள்',
     reviews: 'மதிப்பாய்வுகள்',
     contact: 'தொடர்பு',
+    faq: 'கேள்வி-பதில்',
+    servicesNav: 'சேவைகள்',
 
-    // ── Form Labels ──────────────────────────────────────────────
     oneWay: 'ஒரு வழிப் பயணம்',
     roundTrip: 'இரு வழிப் பயணம்',
     name: 'உங்கள் பெயர்',
@@ -254,66 +267,64 @@ export const translations = {
     estimate: 'உடனடி கட்டண மதிப்பீடு காண்க',
     noReturn: 'திரும்பும் கட்டணம் இல்லை',
 
-    // ── Hero ─────────────────────────────────────────────────────
     subtitle: 'தமிழ்நாடு பிரீமியம் அவுட்ஸ்டேஷன் டாக்ஸி சேவை',
     mainTitle: 'தமிழ்நாடு அவுட்ஸ்டேஷன் டாக்ஸி',
     desc: 'திரும்பும் கட்டணம் இல்லை. மறைமுக கட்டணங்கள் இல்லை. தமிழ்நாடு முழுவதும் ₹16/கிமீ நிலையான கட்டணத்தில் — கோயம்புத்தூர், சென்னை, மதுரை, திருநெல்வேலி உட்பட. சரிபார்க்கப்பட்ட ஓட்டுநர்கள், 24/7.',
 
-    // ── Stats ────────────────────────────────────────────────────
     callNow: 'இப்போதே அழைக்க',
     activeRides: 'தினசரி பயணங்கள்',
     cities: 'இணைக்கப்பட்ட நகரங்கள்',
     rating: 'வாடிக்கையாளர் மதிப்பீடு',
 
-    // ── Estimate Modal ───────────────────────────────────────────
     estTitle: 'அவுட்ஸ்டேஷன் கட்டண மதிப்பீடு',
     totalEst: 'மதிப்பிடப்பட்ட கட்டணம்',
-    distanceNote:
-      '*தோராயமான நேர்கோட்டு தூரத்தின் அடிப்படையில் கணக்கிடப்பட்டது. டோல்கேட் மற்றும் ஓட்டுநர் பட்டா தனியாக வரும்.',
+    distanceNote: '*தோராயமான நேர்கோட்டு தூரத்தின் அடிப்படையில் கணக்கிடப்பட்டது. டோல்கேட் மற்றும் ஓட்டுநர் பட்டா தனியாக வரும்.',
     confirmWhatsApp: 'வாட்ஸ்அப் மூலம் முன்பதிவு செய்க',
     close: 'மூடு',
 
-    // ── Tariff Section ───────────────────────────────────────────
+    services: {
+      drop: { title: 'டிராப் சேவை', desc: 'திரும்பும் கட்டணம் இல்லாத ஒரு வழிப்பயணம். நீங்கள் பயணிக்கும் தூரத்திற்கு மட்டும் கட்டணம் செலுத்துங்கள்.' },
+      outstation: { title: 'அவுட்ஸ்டேஷன் டாக்ஸி', desc: 'தமிழ்நாடு மற்றும் அண்டை மாநிலங்களுக்கு நீண்ட தூர பயணத்திற்கான வசதியான டாக்ஸி சேவை.' },
+      roundtrip: { title: 'இரு வழிப்பயணம்', desc: 'ஒரே ஓட்டுநர் மற்றும் காருடன் இரு வழி முன்பதிவு. குறுகிய கால பயணங்களுக்கு ஏற்றது.' },
+      airport: { title: 'விமான நிலைய சேவை', desc: 'சென்னை, கோவை, மதுரை போன்ற முக்கிய விமான நிலையங்களுக்கு நம்பகமான பிக்அப் மற்றும் டிராப்.' },
+      hourly: { title: 'மணிநேர வாடகை', desc: 'நகர பயன்பாட்டிற்கு ஓட்டுநருடன் கூடிய டாக்ஸி. சந்திப்புகள் மற்றும் வேலைகளுக்கு ஏற்றது.' },
+      wedding: { title: 'திருமண டாக்ஸி சேவை', desc: 'விருந்தினர்கள், மணமகன்/மணமகள் மற்றும் குடும்பப் பயணங்களுக்கு பல வாகன விருப்பங்கள்.' },
+      corporate: { title: 'நிறுவனப் பயணம்', desc: 'அலுவலகங்கள் மற்றும் வணிகப் பயணங்களுக்கான பிரத்யேக டாக்ஸி தீர்வுகள்.' },
+      temple: { title: 'கோயில் சுற்றுலா', desc: 'திருப்பதி, ராமேஸ்வரம், பழனி, மதுரை மற்றும் பல இடங்களுக்கு நிலையான கட்டண தொகுப்புகள்.' },
+      hill: { title: 'மலைப்பிரதேச பயணம்', desc: 'ஊட்டி, கொடைக்கானல், ஏற்காடு போன்ற இடங்களுக்கு அனுபவம் வாய்ந்த ஓட்டுநர்களுடன் பயணம்.' },
+      pet: { title: 'செல்லப்பிராணிகள் டாக்ஸி', desc: 'செல்லப்பிராணிகளை பாதுகாப்பாகவும் வசதியாகவும் அழைத்துச் செல்ல பிரத்யேக வசதி.' },
+      group: { title: 'குழு டாக்ஸி / MUV', desc: 'குடும்பம் அல்லது குழு பயணத்திற்கு 6–7 இருக்கை வாகனங்கள் மற்றும் கூடுதல் லக்கேஜ் வசதி.' },
+      senior: { title: 'முதியோர் பயணம்', desc: 'முதியவர்களுக்காக கூடுதல் கவனிப்பு மற்றும் பொறுமையான ஓட்டுநர்கள்.' },
+    },
+
     transparentTariff: 'வெளிப்படையான அவுட்ஸ்டேஷன் கட்டணங்கள்',
-    tariffSub:
-      'தமிழ்நாடு முழுவதும் ஒரு கிலோமீட்டருக்கு நிலையான கட்டணம். கூடுதல் கட்டணங்கள் இல்லை. ஒரு வழி கட்டணம் மட்டும் — திரும்பும் கட்டணம் இல்லை.',
+    tariffSub: 'தமிழ்நாடு முழுவதும் ஒரு கிலோமீட்டருக்கு நிலையான கட்டணம். கூடுதல் கட்டணங்கள் இல்லை. ஒரு வழி கட்டணம் மட்டும் — திரும்பும் கட்டணம் இல்லை.',
     passengers: 'பயணிகள்',
     luggage: 'சூட்கேஸ்',
     extraCharges: 'ஓட்டுநர் பட்டா & டோல்கேட் தனியானது',
 
-    // ── Features ─────────────────────────────────────────────────
     whyChooseUs: 'ட்ரெண்டிங் டிராப் டாக்ஸியை ஏன் தேர்வு செய்ய வேண்டும்',
     servicesTitle: 'பிரீமியம் கேப் வசதிகள்',
-    featuresSub:
-      'தென்னிந்தியா முழுவதும் நிறுவன மற்றும் சாதாரண பயணங்களுக்கான சிறந்த அவுட்ஸ்டேஷன் பயண அனுபவம்.',
+    featuresSub: 'தென்னிந்தியா முழுவதும் நிறுவன மற்றும் சாதாரண பயணங்களுக்கான சிறந்த அவுட்ஸ்டேஷன் பயண அனுபவம்.',
     featTitle1: 'சரிபார்க்கப்பட்ட ஓட்டுநர் நெட்வொர்க்',
-    featDesc1:
-      'பின்னணி சரிபார்க்கப்பட்ட, தமிழ்நாடு மற்றும் தென்னிந்தியா நெடுந்தூர பயணங்களுக்கு பயிற்சி பெற்ற தொழில்முறை ஓட்டுநர்கள்.',
+    featDesc1: 'பின்னணி சரிபார்க்கப்பட்ட, தமிழ்நாடு மற்றும் தென்னிந்தியா நெடுந்தூர பயணங்களுக்கு பயிற்சி பெற்ற தொழில்முறை ஓட்டுநர்கள்.',
     featTitle2: 'நேரடி GPS கண்காணிப்பு',
-    featDesc2:
-      'ஒவ்வொரு அவுட்ஸ்டேஷன் பயணத்திலும் GPS கண்காணிப்புடன் உடனடி பிக்அப் உறுதி செய்யப்படுகிறது.',
+    featDesc2: 'ஒவ்வொரு அவுட்ஸ்டேஷன் பயணத்திலும் GPS கண்காணிப்புடன் உடனடி பிக்அப் உறுதி செய்யப்படுகிறது.',
     featTitle3: 'கூடுதல் கட்டணங்கள் இல்லை என்ற உறுதிமொழி',
-    featDesc3:
-      'பண்டிகை காலம், விடுமுறை நாட்கள் என எந்த நேரத்திலும் நிலையான கிலோமீட்டர் கட்டணம் — மதிப்பீடு செய்தது தான் செலுத்துவீர்கள்.',
+    featDesc3: 'பண்டிகை காலம், விடுமுறை நாட்கள் என எந்த நேரத்திலும் நிலையான கிலோமீட்டர் கட்டணம் — மதிப்பீடு செய்தது தான் செலுத்துவீர்கள்.',
     execStandard: 'எக்ஸிகியூட்டிவ் தரம்',
     mechSanitation: 'ஆழமாக சுத்தம் செய்யப்பட்ட & சர்வீஸ் செய்யப்பட்ட வாகனங்கள்',
-    mechDesc:
-      'ஒவ்வொரு அவுட்ஸ்டேஷன் வாகனமும் புறப்படுவதற்கு முன் பல கட்ட ஆய்வுக்குட்படுத்தப்படுகிறது — AC, டயர்கள், உள்புறம் சரிபார்க்கப்படுகிறது.',
+    mechDesc: 'ஒவ்வொரு அவுட்ஸ்டேஷன் வாகனமும் புறப்படுவதற்கு முன் பல கட்ட ஆய்வுக்குட்படுத்தப்படுகிறது — AC, டயர்கள், உள்புறம் சரிபார்க்கப்படுகிறது.',
 
-    // ── Destinations ─────────────────────────────────────────────
     destTitle: 'பிரபலமான அவுட்ஸ்டேஷன் வழிகள்',
-    destSub:
-      'தமிழ்நாடு மற்றும் தென்னிந்தியாவில் அதிகம் முன்பதிவு செய்யப்படும் ஒரு வழி டிராப் டாக்ஸி வழிகள்.',
+    destSub: 'தமிழ்நாடு மற்றும் தென்னிந்தியாவில் அதிகம் முன்பதிவு செய்யப்படும் ஒரு வழி டிராப் டாக்ஸி வழிகள்.',
+    popularRoutesTitle: 'பிரபல பாதைகள்',
 
-    // ── Reviews ──────────────────────────────────────────────────
     reviewTitle: 'வாடிக்கையாளர் மதிப்பாய்வுகள்',
-    reviewSub:
-      'தமிழ்நாட்டின் நம்பகமான அவுட்ஸ்டேஷன் கேப் சேவையான ட்ரெண்டிங் டிராப் டாக்ஸியைப் பற்றி பயணிகள் கூறுவது.',
+    reviewSub: 'தமிழ்நாட்டின் நம்பகமான அவுட்ஸ்டேஷன் கேப் சேவையான ட்ரெண்டிங் டிராப் டாக்ஸியைப் பற்றி பயணிகள் கூறுவது.',
 
-    // ── Contact ──────────────────────────────────────────────────
     contactTitle: 'உங்கள் அவுட்ஸ்டேஷன் கேப் முன்பதிவு செய்யுங்கள்',
-    contactSub:
-      'தமிழ்நாடு முழுவதும் அவுட்ஸ்டேஷன் முன்பதிவுகள், நிறுவன பயண ஏற்பாடுகள் மற்றும் உடனடி பிரயாணங்களுக்கு 24/7 கிடைக்கிறோம்.',
+    contactSub: 'தமிழ்நாடு முழுவதும் அவுட்ஸ்டேஷன் முன்பதிவுகள், நிறுவன பயண ஏற்பாடுகள் மற்றும் உடனடி பிரயாணங்களுக்கு 24/7 கிடைக்கிறோம்.',
     contactHeadingPart1: 'நிறுவன அல்லது தனிப்பட்ட',
     contactHeadingPart2: 'அவுட்ஸ்டேஷன்',
     contactHeadingAccent: 'பயணங்களை தொடங்குங்கள்',
@@ -322,33 +333,432 @@ export const translations = {
     verifiedAgency: 'சரிபார்க்கப்பட்ட வணிக கேப் நிறுவனம்',
     whatsappDesk: 'வாட்ஸ்அப் முன்பதிவு சேவை',
 
-    // ── Footer ───────────────────────────────────────────────────
     quickLinks: 'விரைவு இணைப்புகள்',
     contactInfo: 'தொடர்பு தகவல்',
-    rights:
-      'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை. ட்ரெண்டிங் டிராப் டாக்ஸி – தமிழ்நாடு பிரீமியம் அவுட்ஸ்டேஷன் கேப் சேவை.',
-    brandFooterDesc:
-      'ட்ரெண்டிங் டிராப் டாக்ஸி தமிழ்நாடு முழுவதும் நிலையான கிலோமீட்டர் கட்டணத்தில் — திரும்பும் கட்டணம் இல்லாமல், மறைமுக கட்டணங்கள் இல்லாமல் — பிரீமியம் அவுட்ஸ்டேஷன் கேப் சேவை வழங்குகிறது.',
-    footerAddress:
-      'தலைமை அலுவலகம்\nகோயம்புத்தூர் சந்திப்பு, தமிழ்நாடு – 641001\nமின்னஞ்சல்: ops@trendingtaxi.in',
+    rights: 'அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை. ட்ரெண்டிங் டிராப் டாக்ஸி – தமிழ்நாடு பிரீமியம் அவுட்ஸ்டேஷன் கேப் சேவை.',
+    brandFooterDesc: 'ட்ரெண்டிங் டிராப் டாக்ஸி தமிழ்நாடு முழுவதும் நிலையான கிலோமீட்டர் கட்டணத்தில் — திரும்பும் கட்டணம் இல்லாமல், மறைமுக கட்டணங்கள் இல்லாமல் — பிரீமியம் அவுட்ஸ்டேஷன் கேப் சேவை வழங்குகிறது.',
+    footerAddress: 'தலைமை அலுவலகம்\nகோயம்புத்தூர் சந்திப்பு, தமிழ்நாடு – 641001\nமின்னஞ்சல்: ops@trendingtaxi.in',
 
-    // ── Reviews Data ─────────────────────────────────────────────
     reviewsData: [
-      {
-        name: 'டாக்டர். ஆனந்த் கோபாலன்',
-        route: 'சென்னை to மதுரை',
-        text: 'சிறந்த அவுட்ஸ்டேஷன் கேப் அனுபவம். கார் மிகவும் சுத்தமாக இருந்தது, ஓட்டுநருக்கு தேசியநெடுஞ்சாலை வழித்தட அறிவு மிகச் சிறப்பு. மறைமுக கட்டணங்கள் இல்லை.',
-      },
-      {
-        name: 'மீரா கிருஷ்ணன்',
-        route: 'கோயம்புத்தூர் to பெங்களூரு',
-        text: 'ஒரு வழி கட்டணம் மற்ற சேவைகளை விட 40% குறைவு. வெளிப்படையான கட்டண முறை, திரும்பும் கட்டணம் இல்லை — தொடர்ந்து பயணிப்பவர்களுக்கு மிகவும் பரிந்துரைக்கிறேன்.',
-      },
-      {
-        name: 'எஸ். ரங்கநாதன்',
-        route: 'திருநெல்வேலி to சென்னை',
-        text: 'தொழில்முறை அவுட்ஸ்டேஷன் டாக்ஸி சேவை. ஆன்லைன் மதிப்பீடும் இறுதி கட்டணமும் சரியாக ஒத்திருந்தது. தமிழ்நாடு பயணங்களுக்கு மீண்டும் முன்பதிவு செய்வேன்.',
-      },
+      { name: 'டாக்டர். ஆனந்த் கோபாலன்', route: 'சென்னை to மதுரை', text: 'சிறந்த அவுட்ஸ்டேஷன் கேப் அனுபவம். கார் மிகவும் சுத்தமாக இருந்தது, ஓட்டுநருக்கு தேசியநெடுஞ்சாலை வழித்தட அறிவு மிகச் சிறப்பு. மறைமுக கட்டணங்கள் இல்லை.' },
+      { name: 'மீரா கிருஷ்ணன்', route: 'கோயம்புத்தூர் to பெங்களூரு', text: 'ஒரு வழி கட்டணம் மற்ற சேவைகளை விட 40% குறைவு. வெளிப்படையான கட்டண முறை, திரும்பும் கட்டணம் இல்லை — தொடர்ந்து பயணிப்பவர்களுக்கு மிகவும் பரிந்துரைக்கிறேன்.' },
+      { name: 'எஸ். ரங்கநாதன்', route: 'திருநெல்வேலி to சென்னை', text: 'தொழில்முறை அவுட்ஸ்டேஷன் டாக்ஸி சேவை. ஆன்லைன் மதிப்பீடும் இறுதி கட்டணமும் சரியாக ஒத்திருந்தது. தமிழ்நாடு பயணங்களுக்கு மீண்டும் முன்பதிவு செய்வேன்.' },
+    ],
+  },
+
+  // ─────────────────────── HINDI ───────────────────────────────
+  hi: {
+    home: 'होम',
+    about: 'हमारे बारे में',
+    tariff: 'किराया',
+    destinations: 'लोकप्रिय गंतव्य',
+    reviews: 'समीक्षाएं',
+    contact: 'संपर्क',
+    faq: 'सामान्य प्रश्न',
+    servicesNav: 'सेवाएं',
+
+    oneWay: 'एकतरफा',
+    roundTrip: 'राउंड ट्रिप',
+    name: 'आपका नाम',
+    mobile: 'मोबाइल नंबर',
+    pickup: 'पिकअप शहर / पता',
+    drop: 'ड्रॉप शहर / पता',
+    date: 'पिकअप तारीख',
+    time: 'पिकअप समय',
+    returnDate: 'वापसी तारीख',
+    returnTime: 'वापसी समय',
+    selectCar: 'कैब प्रकार चुनें',
+    estimate: 'तुरंत किराया अनुमान पाएं',
+    noReturn: 'कोई वापसी किराया नहीं',
+
+    subtitle: 'प्रीमियम आउटस्टेशन कैब सेवा – तमिलनाडु',
+    mainTitle: 'तमिलनाडु आउटस्टेशन टैक्सी',
+    desc: 'कोई वापसी किराया नहीं। कोई छिपा शुल्क नहीं। तमिलनाडु भर में ₹16/किमी फ्लैट दर — कोयंबटूर, चेन्नई, मदुरई, तिरुनेलवेली और आगे। सत्यापित पेशेवर चालक, 24/7।',
+
+    callNow: 'अभी कॉल करें',
+    activeRides: 'दैनिक सवारियां',
+    cities: 'कवर किए गए शहर',
+    rating: 'ग्राहक रेटिंग',
+
+    estTitle: 'आउटस्टेशन किराया अनुमान',
+    totalEst: 'अनुमानित किराया',
+    distanceNote: '*सीधी-रेखा दूरी के आधार पर अनुमानित। वास्तविक टोल और ड्राइवर भत्ता अतिरिक्त लागू होता है।',
+    confirmWhatsApp: 'WhatsApp से बुकिंग की पुष्टि करें',
+    close: 'बंद करें',
+
+    services: {
+      drop: { title: 'ड्रॉप सेवा', desc: 'वापसी किराए के बिना एकतरफा यात्राएं। केवल आपकी यात्रा की दूरी के लिए भुगतान करें।' },
+      outstation: { title: 'आउटस्टेशन टैक्सी', desc: 'तमिलनाडु और पड़ोसी राज्यों में लंबी दूरी की यात्रा के लिए आरामदायक सवारी।' },
+      roundtrip: { title: 'राउंड ट्रिप', desc: 'एक ही ड्राइवर और कार के साथ दो-तरफा बुकिंग। छोटी यात्राओं या व्यवसाय के लिए आदर्श।' },
+      airport: { title: 'एयरपोर्ट ट्रांसफर', desc: 'प्रमुख हवाई अड्डों से विश्वसनीय पिकअप और ड्रॉप — चेन्नई, कोयंबटूर, मदुरई।' },
+      hourly: { title: 'घंटेवार किराया', desc: 'शहर में उपयोग के लिए ड्राइवर के साथ कैब किराए पर लें। मीटिंग या काम के लिए बेहतरीन।' },
+      wedding: { title: 'विवाह टैक्सी सेवा', desc: 'मेहमानों, दूल्हा/दुल्हन पिकअप और परिवार परिवहन के लिए कई कार विकल्प।' },
+      corporate: { title: 'कॉर्पोरेट यात्रा', desc: 'कार्यालयों, व्यापार यात्रियों और कंपनी टाई-अप के लिए टैक्सी समाधान।' },
+      temple: { title: 'मंदिर दर्शन', desc: 'तिरुपति, रामेश्वरम, पलानी, मदुरई और अन्य स्थानों के लिए फिक्स्ड-रेट पैकेज।' },
+      hill: { title: 'हिल स्टेशन राइड्स', desc: 'ऊटी, कोडईकनाल, येरकाड आदि की यात्रा के लिए सुरक्षित और अनुभवी ड्राइवर।' },
+      pet: { title: 'पेट-फ्रेंडली टैक्सी', desc: 'पालतू जानवरों को सुरक्षित और आरामदायक तरीके से ले जाने के लिए समर्पित जगह।' },
+      group: { title: 'ग्रुप टैक्सी / MUV', desc: 'परिवार या समूह यात्रा के लिए 6–7 सीटर विकल्प, अतिरिक्त सामान क्षमता के साथ।' },
+      senior: { title: 'वरिष्ठ नागरिक यात्रा', desc: 'बुजुर्ग यात्रियों के लिए विनम्र, धैर्यवान ड्राइवर और विशेष सहायता।' },
+    },
+
+    transparentTariff: 'पारदर्शी आउटस्टेशन किराया',
+    tariffSub: 'तमिलनाडु भर में फ्लैट प्रति-किमी मूल्य निर्धारण। कोई सर्ज नहीं। कोई छिपे शुल्क नहीं। केवल एकतरफा किराया — कोई वापसी शुल्क नहीं।',
+    passengers: 'यात्री',
+    luggage: 'सामान',
+    extraCharges: 'ड्राइवर भत्ता और टोल अतिरिक्त',
+
+    whyChooseUs: 'ट्रेंडिंग ड्रॉप टैक्सी क्यों चुनें',
+    servicesTitle: 'प्रीमियम कैब सुविधाएं',
+    featuresSub: 'दक्षिण भारत में कॉर्पोरेट और आनंद यात्राओं के लिए उत्कृष्ट आउटस्टेशन यात्रा अनुभव।',
+    featTitle1: 'अपनी सवारी चुनें',
+    featDesc1: 'हमारे उच्च-श्रेणी वाहनों की विविध श्रेणी देखें, अपनी पसंदीदा पिकअप और वापसी तिथियां चुनें।',
+    featTitle2: 'बुक और कन्फर्म करें',
+    featDesc2: 'सरल बुकिंग प्रक्रिया। अपना विवरण भरें और व्हाट्सएप के जरिए तुरंत पुष्टि पाएं।',
+    featTitle3: 'बुक करें और आनंद लें',
+    featDesc3: 'पेशेवर चालक, साफ वाहन और पारदर्शी बिलिंग के साथ तनाव-मुक्त यात्रा का अनुभव करें।',
+    execStandard: 'एग्जीक्यूटिव स्टैंडर्ड',
+    mechSanitation: 'डीप-क्लीन्ड और सर्विस्ड कैब',
+    mechDesc: 'प्रत्येक आउटस्टेशन कैब प्रस्थान से पहले मल्टी-पॉइंट निरीक्षण से गुजरती है — AC, टायर, इंटीरियर सत्यापित।',
+
+    destTitle: 'लोकप्रिय आउटस्टेशन मार्ग',
+    destSub: 'तमिलनाडु और दक्षिण भारत में सबसे अधिक बुक किए गए एकतरफा ड्रॉप टैक्सी मार्ग।',
+    popularRoutesTitle: 'टॉप ट्रैक्स',
+
+    reviewTitle: 'ग्राहक समीक्षाएं',
+    reviewSub: 'व्यापार और आनंद यात्री ट्रेंडिंग ड्रॉप टैक्सी के बारे में क्या कहते हैं।',
+
+    contactTitle: 'अपनी आउटस्टेशन कैब बुक करें',
+    contactSub: 'तमिलनाडु भर में आउटस्टेशन बुकिंग, कॉर्पोरेट यात्रा व्यवस्था और तत्काल प्रेषण के लिए 24/7 उपलब्ध।',
+    contactHeadingPart1: 'कॉर्पोरेट या व्यक्तिगत',
+    contactHeadingPart2: 'आउटस्टेशन',
+    contactHeadingAccent: 'यात्राएं बुक करें',
+    location: 'तिरुनेलवेली / कोयंबटूर, तमिलनाडु',
+    opsHub: '24/7 बुकिंग संचालन',
+    verifiedAgency: 'सत्यापित वाणिज्यिक कैब एजेंसी',
+    whatsappDesk: 'WhatsApp बुकिंग डेस्क',
+
+    quickLinks: 'त्वरित लिंक',
+    contactInfo: 'संपर्क जानकारी',
+    rights: 'सर्वाधिकार सुरक्षित। ट्रेंडिंग ड्रॉप टैक्सी – प्रीमियम आउटस्टेशन कैब सेवा, तमिलनाडु।',
+    brandFooterDesc: 'ट्रेंडिंग ड्रॉप टैक्सी तमिलनाडु भर में फ्लैट-रेट प्रति-किमी मूल्य निर्धारण के साथ प्रीमियम आउटस्टेशन कैब सेवाएं प्रदान करती है।',
+    footerAddress: 'मुख्य डिस्पैच हब\nकोयंबटूर जंक्शन, तमिलनाडु – 641001\nईमेल: ops@trendingtaxi.in',
+
+    reviewsData: [
+      { name: 'डॉ. आनंद गोपालन', route: 'चेन्नई से मदुरई', text: 'उत्कृष्ट आउटस्टेशन कैब अनुभव। कार बेदाग थी और ड्राइवर को हाईवे मार्ग का शानदार ज्ञान था। कोई छिपे शुल्क नहीं — बिल्कुल जैसा उद्धृत किया गया था।' },
+      { name: 'मीरा कृष्णन', route: 'कोयंबटूर से बैंगलोर', text: 'एकतरफा किराए ने मुझे अन्य आउटस्टेशन सेवाओं की तुलना में लगभग 40% बचाया। पारदर्शी बिलिंग, कोई वापसी किराया नहीं — नियमित यात्रियों के लिए अत्यधिक अनुशंसित।' },
+      { name: 'एस. रंगनाथन', route: 'तिरुनेलवेली से चेन्नई', text: 'पेशेवर आउटस्टेशन टैक्सी सेवा। ऑनलाइन अनुमान अंतिम इनवॉइस से बिल्कुल मेल खाया। तमिलनाडु यात्राओं के लिए फिर से बुक करूंगा।' },
+    ],
+  },
+
+  // ─────────────────────── KANNADA ─────────────────────────────
+  kn: {
+    home: 'ಮುಖಪುಟ',
+    about: 'ನಮ್ಮ ಬಗ್ಗೆ',
+    tariff: 'ದರ',
+    destinations: 'ಜನಪ್ರಿಯ ತಾಣಗಳು',
+    reviews: 'ವಿಮರ್ಶೆಗಳು',
+    contact: 'ಸಂಪರ್ಕ',
+    faq: 'ಸಾಮಾನ್ಯ ಪ್ರಶ್ನೆಗಳು',
+    servicesNav: 'ಸೇವೆಗಳು',
+
+    oneWay: 'ಒನ್ ವೇ',
+    roundTrip: 'ರೌಂಡ್ ಟ್ರಿಪ್',
+    name: 'ನಿಮ್ಮ ಹೆಸರು',
+    mobile: 'ಮೊಬೈಲ್ ಸಂಖ್ಯೆ',
+    pickup: 'ಪಿಕಪ್ ನಗರ / ವಿಳಾಸ',
+    drop: 'ಡ್ರಾಪ್ ನಗರ / ವಿಳಾಸ',
+    date: 'ಪಿಕಪ್ ದಿನಾಂಕ',
+    time: 'ಪಿಕಪ್ ಸಮಯ',
+    returnDate: 'ಮರಳುವ ದಿನಾಂಕ',
+    returnTime: 'ಮರಳುವ ಸಮಯ',
+    selectCar: 'ಕ್ಯಾಬ್ ಪ್ರಕಾರ ಆಯ್ಕೆ ಮಾಡಿ',
+    estimate: 'ತಕ್ಷಣ ಬಾಡಿಗೆ ಅಂದಾಜು ಪಡೆಯಿರಿ',
+    noReturn: 'ಮರಳುವ ಶುಲ್ಕ ಇಲ್ಲ',
+
+    subtitle: 'ಪ್ರೀಮಿಯಂ ಔಟ್‌ಸ್ಟೇಷನ್ ಕ್ಯಾಬ್ ಸೇವೆ – ತಮಿಳುನಾಡು',
+    mainTitle: 'ತಮಿಳುನಾಡು ಔಟ್‌ಸ್ಟೇಷನ್ ಟ್ಯಾಕ್ಸಿ',
+    desc: 'ಮರಳುವ ಶುಲ್ಕ ಇಲ್ಲ. ಗುಪ್ತ ಶುಲ್ಕಗಳಿಲ್ಲ. ತಮಿಳುನಾಡಿನಾದ್ಯಂತ ₹16/ಕಿಮೀ ಫ್ಲಾಟ್ ದರ — ಕೊಯಮತ್ತೂರು, ಚೆನ್ನೈ, ಮಧುರೈ, ತಿರುನೆಲ್ವೇಲಿ ಮತ್ತು ಹೆಚ್ಚು. ಪರಿಶೀಲಿತ ವೃತ್ತಿಪರ ಚಾಲಕರು, 24/7.',
+
+    callNow: 'ಈಗ ಕರೆ ಮಾಡಿ',
+    activeRides: 'ದೈನಂದಿನ ಸವಾರಿಗಳು',
+    cities: 'ಒಳಗೊಂಡ ನಗರಗಳು',
+    rating: 'ಗ್ರಾಹಕ ರೇಟಿಂಗ್',
+
+    estTitle: 'ಔಟ್‌ಸ್ಟೇಷನ್ ಬಾಡಿಗೆ ಅಂದಾಜು',
+    totalEst: 'ಅಂದಾಜು ಬಾಡಿಗೆ',
+    distanceNote: '*ನೇರ-ರೇಖೆ ದೂರವನ್ನು ಆಧರಿಸಿದ ಸರಿಸುಮಾರು ಅಂದಾಜು. ವಾಸ್ತವ ಟೋಲ್ ಮತ್ತು ಚಾಲಕ ಭತ್ಯೆ ಹೆಚ್ಚುವರಿಯಾಗಿ ಅನ್ವಯಿಸುತ್ತದೆ.',
+    confirmWhatsApp: 'WhatsApp ಮೂಲಕ ಬುಕಿಂಗ್ ಖಚಿತಪಡಿಸಿ',
+    close: 'ಮುಚ್ಚಿ',
+
+    services: {
+      drop: { title: 'ಡ್ರಾಪ್ ಸೇವೆ', desc: 'ಮರಳುವ ಶುಲ್ಕ ಇಲ್ಲದ ಒನ್-ವೇ ಪ್ರಯಾಣ. ನೀವು ಪ್ರಯಾಣಿಸುವ ದೂರಕ್ಕೆ ಮಾತ್ರ ಪಾವತಿಸಿ.' },
+      outstation: { title: 'ಔಟ್‌ಸ್ಟೇಷನ್ ಟ್ಯಾಕ್ಸಿ', desc: 'ತಮಿಳುನಾಡು ಮತ್ತು ನೆರೆ ರಾಜ್ಯಗಳಲ್ಲಿ ದೀರ್ಘ ದೂರದ ಪ್ರಯಾಣಕ್ಕೆ ಆರಾಮದಾಯಕ ಸವಾರಿ.' },
+      roundtrip: { title: 'ರೌಂಡ್ ಟ್ರಿಪ್', desc: 'ಅದೇ ಚಾಲಕ ಮತ್ತು ಕಾರಿನೊಂದಿಗೆ ಎರಡು-ಮಾರ್ಗ ಬುಕಿಂಗ್. ಚಿಕ್ಕ ಭೇಟಿ ಅಥವಾ ವ್ಯವಹಾರಕ್ಕೆ ಸೂಕ್ತ.' },
+      airport: { title: 'ಏರ್‌ಪೋರ್ಟ್ ವರ್ಗಾವಣೆ', desc: 'ಚೆನ್ನೈ, ಕೊಯಮತ್ತೂರು, ಮಧುರೈ ಪ್ರಮುಖ ವಿಮಾನ ನಿಲ್ದಾಣಗಳಿಂದ ವಿಶ್ವಾಸಾರ್ಹ ಪಿಕಪ್ ಮತ್ತು ಡ್ರಾಪ್.' },
+      hourly: { title: 'ಗಂಟೆ ಬಾಡಿಗೆ', desc: 'ನಗರ ಬಳಕೆಗೆ ಚಾಲಕನೊಂದಿಗೆ ಕ್ಯಾಬ್ ಬಾಡಿಗೆ. ಸಭೆ ಅಥವಾ ಕೆಲಸಕ್ಕೆ ಸೂಕ್ತ.' },
+      wedding: { title: 'ಮದುವೆ ಟ್ಯಾಕ್ಸಿ ಸೇವೆ', desc: 'ಅತಿಥಿಗಳು, ವಧೂ/ವರ ಪಿಕಪ್ ಮತ್ತು ಕುಟುಂಬ ಸಾರಿಗೆಗೆ ಅನೇಕ ಕಾರ್ ಆಯ್ಕೆಗಳು.' },
+      corporate: { title: 'ಕಾರ್ಪೊರೇಟ್ ಪ್ರಯಾಣ', desc: 'ಕಚೇರಿಗಳು, ವ್ಯಾಪಾರ ಪ್ರಯಾಣಿಕರು ಮತ್ತು ಕಂಪನಿ ಟೈ-ಅಪ್‌ಗಳಿಗೆ ಟ್ಯಾಕ್ಸಿ ಪರಿಹಾರಗಳು.' },
+      temple: { title: 'ದೇವಾಲಯ ಪ್ರವಾಸ', desc: 'ತಿರುಪತಿ, ರಾಮೇಶ್ವರಮ್, ಪಳನಿ, ಮಧುರೈ ಮತ್ತು ಹೆಚ್ಚಿನ ಸ್ಥಳಗಳಿಗೆ ಫಿಕ್ಸ್ಡ್-ರೇಟ್ ಪ್ಯಾಕೇಜ್‌ಗಳು.' },
+      hill: { title: 'ಹಿಲ್ ಸ್ಟೇಷನ್ ಸವಾರಿ', desc: 'ಊಟಿ, ಕೊಡೈಕನಾಲ್, ಯೆರ್ಕಾಡ್ ಪ್ರವಾಸಕ್ಕೆ ಸುರಕ್ಷಿತ ಮತ್ತು ಅನುಭವಿ ಚಾಲಕರು.' },
+      pet: { title: 'ಪೆಟ್-ಫ್ರೆಂಡ್ಲಿ ಟ್ಯಾಕ್ಸಿ', desc: 'ಸಾಕು ಪ್ರಾಣಿಗಳನ್ನು ಸುರಕ್ಷಿತವಾಗಿ ಮತ್ತು ಆರಾಮದಾಯಕವಾಗಿ ಸಾಗಿಸಲು ಮೀಸಲಾದ ಜಾಗ.' },
+      group: { title: 'ಗ್ರೂಪ್ ಟ್ಯಾಕ್ಸಿ / MUV', desc: 'ಕುಟುಂಬ ಅಥವಾ ಗುಂಪು ಪ್ರಯಾಣಕ್ಕೆ 6–7 ಸೀಟರ್ ಆಯ್ಕೆಗಳು, ಹೆಚ್ಚುವರಿ ಸಾಮಾನು ಸಾಮರ್ಥ್ಯದೊಂದಿಗೆ.' },
+      senior: { title: 'ಹಿರಿಯ ನಾಗರಿಕ ಪ್ರಯಾಣ', desc: 'ವಯಸ್ಸಾದ ಪ್ರಯಾಣಿಕರಿಗೆ ವಿನಯಶೀಲ, ತಾಳ್ಮೆಯ ಚಾಲಕರು ಮತ್ತು ವಿಶೇಷ ಸಹಾಯ.' },
+    },
+
+    transparentTariff: 'ಪಾರದರ್ಶಕ ಔಟ್‌ಸ್ಟೇಷನ್ ದರ',
+    tariffSub: 'ತಮಿಳುನಾಡಿನಾದ್ಯಂತ ಫ್ಲಾಟ್ ಪ್ರತಿ-ಕಿಮೀ ಬೆಲೆ. ಸರ್ಜ್ ಶೂನ್ಯ. ಗುಪ್ತ ಶುಲ್ಕ ಶೂನ್ಯ. ಕೇವಲ ಒನ್-ವೇ ಶುಲ್ಕ — ಮರಳುವ ಶುಲ್ಕ ಇಲ್ಲ.',
+    passengers: 'ಪ್ರಯಾಣಿಕರು',
+    luggage: 'ಸಾಮಾನು',
+    extraCharges: 'ಚಾಲಕ ಭತ್ಯೆ ಮತ್ತು ಟೋಲ್ ಹೆಚ್ಚುವರಿ',
+
+    whyChooseUs: 'ಟ್ರೆಂಡಿಂಗ್ ಡ್ರಾಪ್ ಟ್ಯಾಕ್ಸಿ ಏಕೆ ಆಯ್ಕೆ ಮಾಡಬೇಕು',
+    servicesTitle: 'ಪ್ರೀಮಿಯಂ ಕ್ಯಾಬ್ ವೈಶಿಷ್ಟ್ಯಗಳು',
+    featuresSub: 'ದಕ್ಷಿಣ ಭಾರತದಾದ್ಯಂತ ಕಾರ್ಪೊರೇಟ್ ಮತ್ತು ವಿರಾಮ ಪ್ರಯಾಣಗಳಿಗಾಗಿ ಉನ್ನತ ಔಟ್‌ಸ್ಟೇಷನ್ ಪ್ರಯಾಣ ಅನುಭವ.',
+    featTitle1: 'ನಿಮ್ಮ ಸವಾರಿ ಆಯ್ಕೆ ಮಾಡಿ',
+    featDesc1: 'ನಮ್ಮ ಉನ್ನತ-ಮಟ್ಟದ ವಾಹನಗಳ ವೈವಿಧ್ಯಮಯ ಆಯ್ಕೆಯನ್ನು ಅನ್ವೇಷಿಸಿ, ನಿಮ್ಮ ಪಿಕಪ್ ಮತ್ತು ಮರಳುವ ದಿನಾಂಕಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.',
+    featTitle2: 'ಬುಕ್ ಮಾಡಿ ಮತ್ತು ಖಚಿತಪಡಿಸಿ',
+    featDesc2: 'ನಿಮ್ಮ ವಿವರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ ಮತ್ತು WhatsApp ಮೂಲಕ ತಕ್ಷಣ ದೃಢೀಕರಣ ಪಡೆಯಿರಿ.',
+    featTitle3: 'ಬುಕ್ ಮಾಡಿ ಮತ್ತು ಆನಂದಿಸಿ',
+    featDesc3: 'ವೃತ್ತಿಪರ ಚಾಲಕ, ಸ್ವಚ್ಛ ವಾಹನ ಮತ್ತು ಪಾರದರ್ಶಕ ಬಿಲ್ಲಿಂಗ್‌ನೊಂದಿಗೆ ತೊಂದರೆ-ಮುಕ್ತ ಪ್ರಯಾಣ.',
+    execStandard: 'ಎಕ್ಸಿಕ್ಯೂಟಿವ್ ಮಾನದಂಡ',
+    mechSanitation: 'ಡೀಪ್-ಕ್ಲೀನ್ಡ್ ಮತ್ತು ಸರ್ವಿಸ್ಡ್ ಕ್ಯಾಬ್‌ಗಳು',
+    mechDesc: 'ಪ್ರತಿ ಔಟ್‌ಸ್ಟೇಷನ್ ಕ್ಯಾಬ್ ಹೊರಡುವ ಮೊದಲು ಮಲ್ಟಿ-ಪಾಯಿಂಟ್ ತಪಾಸಣೆಗೆ ಒಳಗಾಗುತ್ತದೆ — AC, ಟೈರ್‌ಗಳು, ಒಳಭಾಗ ಪರಿಶೀಲಿಸಲಾಗಿದೆ.',
+
+    destTitle: 'ಜನಪ್ರಿಯ ಔಟ್‌ಸ್ಟೇಷನ್ ಮಾರ್ಗಗಳು',
+    destSub: 'ತಮಿಳುನಾಡು ಮತ್ತು ದಕ್ಷಿಣ ಭಾರತದಲ್ಲಿ ಅತ್ಯಧಿಕ ಬುಕ್ ಮಾಡಲಾದ ಒನ್-ವೇ ಡ್ರಾಪ್ ಟ್ಯಾಕ್ಸಿ ಮಾರ್ಗಗಳು.',
+    popularRoutesTitle: 'ಟಾಪ್ ಟ್ರ್ಯಾಕ್ಸ್',
+
+    reviewTitle: 'ಗ್ರಾಹಕ ವಿಮರ್ಶೆಗಳು',
+    reviewSub: 'ಟ್ರೆಂಡಿಂಗ್ ಡ್ರಾಪ್ ಟ್ಯಾಕ್ಸಿ ಬಗ್ಗೆ ವ್ಯಾಪಾರ ಮತ್ತು ವಿರಾಮ ಪ್ರಯಾಣಿಕರು ಏನು ಹೇಳುತ್ತಾರೆ.',
+
+    contactTitle: 'ನಿಮ್ಮ ಔಟ್‌ಸ್ಟೇಷನ್ ಕ್ಯಾಬ್ ಬುಕ್ ಮಾಡಿ',
+    contactSub: 'ತಮಿಳುನಾಡಿನಾದ್ಯಂತ ಔಟ್‌ಸ್ಟೇಷನ್ ಬುಕಿಂಗ್‌ಗಳು, ಕಾರ್ಪೊರೇಟ್ ಪ್ರಯಾಣ ವ್ಯವಸ್ಥೆ ಮತ್ತು ತಕ್ಷಣದ ರವಾನೆಗೆ 24/7 ಲಭ್ಯ.',
+    contactHeadingPart1: 'ಕಾರ್ಪೊರೇಟ್ ಅಥವಾ ವೈಯಕ್ತಿಕ',
+    contactHeadingPart2: 'ಔಟ್‌ಸ್ಟೇಷನ್',
+    contactHeadingAccent: 'ಪ್ರಯಾಣ ಬುಕ್ ಮಾಡಿ',
+    location: 'ತಿರುನೆಲ್ವೇಲಿ / ಕೊಯಮತ್ತೂರು, ತಮಿಳುನಾಡು',
+    opsHub: '24/7 ಬುಕಿಂಗ್ ಕಾರ್ಯಾಚರಣೆಗಳು',
+    verifiedAgency: 'ಪರಿಶೀಲಿತ ವಾಣಿಜ್ಯ ಕ್ಯಾಬ್ ಏಜೆನ್ಸಿ',
+    whatsappDesk: 'WhatsApp ಬುಕಿಂಗ್ ಡೆಸ್ಕ್',
+
+    quickLinks: 'ತ್ವರಿತ ಲಿಂಕ್‌ಗಳು',
+    contactInfo: 'ಸಂಪರ್ಕ ಮಾಹಿತಿ',
+    rights: 'ಎಲ್ಲ ಹಕ್ಕುಗಳೂ ಕಾಯ್ದಿರಿಸಲ್ಪಟ್ಟಿವೆ. ಟ್ರೆಂಡಿಂಗ್ ಡ್ರಾಪ್ ಟ್ಯಾಕ್ಸಿ – ಪ್ರೀಮಿಯಂ ಔಟ್‌ಸ್ಟೇಷನ್ ಕ್ಯಾಬ್ ಸೇವೆ, ತಮಿಳುನಾಡು.',
+    brandFooterDesc: 'ಟ್ರೆಂಡಿಂಗ್ ಡ್ರಾಪ್ ಟ್ಯಾಕ್ಸಿ ತಮಿಳುನಾಡಿನಾದ್ಯಂತ ಫ್ಲಾಟ್-ರೇಟ್ ಪ್ರತಿ-ಕಿಮೀ ಬೆಲೆ ನಿಗದಿಯೊಂದಿಗೆ ಪ್ರೀಮಿಯಂ ಔಟ್‌ಸ್ಟೇಷನ್ ಕ್ಯಾಬ್ ಸೇವೆಗಳನ್ನು ನೀಡುತ್ತದೆ.',
+    footerAddress: 'ಮುಖ್ಯ ಡಿಸ್ಪ್ಯಾಚ್ ಹಬ್\nಕೊಯಮತ್ತೂರು ಜಂಕ್ಷನ್, ತಮಿಳುನಾಡು – 641001\nಇಮೇಲ್: ops@trendingtaxi.in',
+
+    reviewsData: [
+      { name: 'ಡಾ. ಆನಂದ್ ಗೋಪಾಲನ್', route: 'ಚೆನ್ನೈ ನಿಂದ ಮಧುರೈ', text: 'ಅತ್ಯುತ್ತಮ ಔಟ್‌ಸ್ಟೇಷನ್ ಕ್ಯಾಬ್ ಅನುಭವ. ಕಾರು ನಿರ್ದೋಷವಾಗಿತ್ತು ಮತ್ತು ಚಾಲಕನಿಗೆ ಹೆದ್ದಾರಿ ಮಾರ್ಗದ ಅತ್ಯುತ್ತಮ ಜ್ಞಾನವಿತ್ತು. ಗುಪ್ತ ಶುಲ್ಕಗಳಿರಲಿಲ್ಲ.' },
+      { name: 'ಮೀರಾ ಕೃಷ್ಣನ್', route: 'ಕೊಯಮತ್ತೂರು ನಿಂದ ಬೆಂಗಳೂರು', text: 'ಒನ್-ವೇ ದರ ಇತರ ಔಟ್‌ಸ್ಟೇಷನ್ ಸೇವೆಗಳಿಗೆ ಹೋಲಿಸಿದರೆ ನನಗೆ ಸುಮಾರು 40% ಉಳಿಸಿತು. ಪಾರದರ್ಶಕ ಬಿಲ್ಲಿಂಗ್, ಮರಳುವ ಶುಲ್ಕ ಇಲ್ಲ.' },
+      { name: 'ಎಸ್. ರಂಗನಾಥನ್', route: 'ತಿರುನೆಲ್ವೇಲಿ ನಿಂದ ಚೆನ್ನೈ', text: 'ವೃತ್ತಿಪರ ಔಟ್‌ಸ್ಟೇಷನ್ ಟ್ಯಾಕ್ಸಿ ಸೇವೆ. ಆನ್‌ಲೈನ್ ಅಂದಾಜು ಅಂತಿಮ ಇನ್‌ವಾಯ್ಸ್‌ನೊಂದಿಗೆ ನಿಖರವಾಗಿ ಹೊಂದಿಕೆಯಾಯಿತು.' },
+    ],
+  },
+
+  // ─────────────────────── MALAYALAM ───────────────────────────
+  ml: {
+    home: 'ഹോം',
+    about: 'ഞങ്ങളെക്കുറിച്ച്',
+    tariff: 'നിരക്ക്',
+    destinations: 'ജനപ്രിയ ലക്ഷ്യസ്ഥാനങ്ങൾ',
+    reviews: 'അഭിപ്രായങ്ങൾ',
+    contact: 'ബന്ധപ്പെടുക',
+    faq: 'പൊതുവായ ചോദ്യങ്ങൾ',
+    servicesNav: 'സേവനങ്ങൾ',
+
+    oneWay: 'ഒറ്റ വഴി',
+    roundTrip: 'റൗണ്ട് ട്രിപ്പ്',
+    name: 'നിങ്ങളുടെ പേര്',
+    mobile: 'മൊബൈൽ നമ്പർ',
+    pickup: 'പിക്കപ്പ് നഗരം / വിലാസം',
+    drop: 'ഡ്രോപ്പ് നഗരം / വിലാസം',
+    date: 'പിക്കപ്പ് തീയതി',
+    time: 'പിക്കപ്പ് സമയം',
+    returnDate: 'തിരിച്ചുപോകൽ തീയതി',
+    returnTime: 'തിരിച്ചുപോകൽ സമയം',
+    selectCar: 'ക്യാബ് തരം തിരഞ്ഞെടുക്കുക',
+    estimate: 'ഉടനടി നിരക്ക് കണക്കാക്കൽ നേടുക',
+    noReturn: 'തിരിച്ചുപോകൽ ചാർജ് ഇല്ല',
+
+    subtitle: 'പ്രീമിയം ഔട്ട്‌സ്റ്റേഷൻ ക്യാബ് സേവനം – തമിഴ്‌നാട്',
+    mainTitle: 'തമിഴ്‌നാട് ഔട്ട്‌സ്റ്റേഷൻ ടാക്സി',
+    desc: 'തിരിച്ചുപോകൽ ചാർജ് ഇല്ല. മറഞ്ഞ ചാർജുകൾ ഇല്ല. തമിഴ്‌നാട് മുഴുവൻ ₹16/കിമി ഫ്ലാറ്റ് നിരക്ക് — കോയമ്പത്തൂർ, ചെന്നൈ, മധുരൈ, തിരുനെൽവേലി തുടങ്ങിയവ. പരിശോധിച്ച പ്രൊഫഷണൽ ഡ്രൈവർമാർ, 24/7.',
+
+    callNow: 'ഇപ്പോൾ വിളിക്കുക',
+    activeRides: 'ദൈനംദിന യാത്രകൾ',
+    cities: 'ഉൾക്കൊള്ളുന്ന നഗരങ്ങൾ',
+    rating: 'ഉപഭോക്തൃ റേറ്റിംഗ്',
+
+    estTitle: 'ഔട്ട്‌സ്റ്റേഷൻ ചാർജ് കണക്കാക്കൽ',
+    totalEst: 'ഏകദേശ ചാർജ്',
+    distanceNote: '*നേർരേഖ ദൂരത്തെ അടിസ്ഥാനമാക്കിയ ഏകദേശ കണക്കാക്കൽ. ടോൾ, ഡ്രൈവർ ബേറ്റ ചാർജുകൾ അധികം ബാധകമാകും.',
+    confirmWhatsApp: 'WhatsApp വഴി ബുക്കിംഗ് സ്ഥിരീകരിക്കുക',
+    close: 'അടയ്ക്കുക',
+
+    services: {
+      drop: { title: 'ഡ്രോപ്പ് സേവനം', desc: 'തിരിച്ചുപോകൽ ചാർജ് ഇല്ലാത്ത ഒറ്റ-വഴി യാത്രകൾ. നിങ്ങൾ യാത്ര ചെയ്യുന്ന ദൂരത്തിന് മാത്രം പണം നൽകുക.' },
+      outstation: { title: 'ഔട്ട്‌സ്റ്റേഷൻ ടാക്സി', desc: 'തമിഴ്‌നാടിലും അടുത്ത സംസ്ഥാനങ്ങളിലും ദീർഘദൂര യാത്രക്ക് സൗകര്യപ്രദമായ ടാക്സി.' },
+      roundtrip: { title: 'റൗണ്ട് ട്രിപ്പ്', desc: 'ഒരേ ഡ്രൈവറും കാറും ഉള്ള ദ്വിദിശ ബുക്കിംഗ്. ചെറിയ സന്ദർശനങ്ങൾക്കോ ബിസിനസ്സിനോ അനുയോജ്യം.' },
+      airport: { title: 'എയർപോർട്ട് ട്രാൻസ്ഫർ', desc: 'ചെന്നൈ, കോയമ്പത്തൂർ, മധുരൈ വിമാനത്താവളങ്ങളിൽ നിന്ന് വിശ്വസനീയ പിക്കപ്പ് ഡ്രോപ്പ്.' },
+      hourly: { title: 'മണിക്കൂർ വാടക', desc: 'നഗര ഉപയോഗത്തിന് ഡ്രൈവറോടൊപ്പം ക്യാബ് വാടകക്ക് നൽകുക. യോഗങ്ങൾക്കും ജോലികൾക്കും അനുയോജ്യം.' },
+      wedding: { title: 'വിവാഹ ടാക്സി സേവനം', desc: 'അതിഥികൾ, വധൂവരൻ പിക്കപ്പ്, കുടുംബ ഗതാഗതം എന്നിവക്ക് ഒന്നിലധികം കാർ ഓപ്ഷനുകൾ.' },
+      corporate: { title: 'കോർപ്പറേറ്റ് ട്രാവൽ', desc: 'ഓഫീസുകൾ, ബിസിനസ് യാത്രക്കാർ, കമ്പനി ടൈ-അപ്പുകൾക്ക് ടാക്സി പരിഹാരങ്ങൾ.' },
+      temple: { title: 'ക്ഷേത്ര പര്യടനം', desc: 'തിരുപ്പതി, രാമേശ്വരം, പഴനി, മധുരൈ തുടങ്ങിയ ദേവാലയങ്ങൾക്ക് ഫിക്സ്ഡ്-റേറ്റ് പാക്കേജ്.' },
+      hill: { title: 'ഹിൽ സ്റ്റേഷൻ യാത്ര', desc: 'ഊട്ടി, കൊടൈക്കനാൽ, യർക്കാട് യാത്രകൾക്ക് സുരക്ഷിതരും അനുഭവസ്ഥരുമായ ഡ്രൈവർമാർ.' },
+      pet: { title: 'പെറ്റ്-ഫ്രണ്ട്‌ലി ടാക്സി', desc: 'വളർത്തുമൃഗങ്ങളെ സുരക്ഷിതമായും സൗകര്യത്തോടെയും കൊണ്ടുപോകാൻ പ്രത്യേക ഇടം.' },
+      group: { title: 'ഗ്രൂപ്പ് ടാക്സി / MUV', desc: 'കുടുംബ അല്ലെങ്കിൽ ഗ്രൂപ്പ് യാത്രകൾക്ക് 6–7 സീറ്റർ ഓപ്ഷനുകൾ, അധിക ലഗേജ് ശേഷിയോടെ.' },
+      senior: { title: 'മുതിർന്ന പൗര യാത്ര', desc: 'പ്രായമായ യാത്രക്കാർക്ക് മര്യാദയുള്ള, ക്ഷമയുള്ള ഡ്രൈവർമാരും പ്രത്യേക സഹായവും.' },
+    },
+
+    transparentTariff: 'സുതാര്യ ഔട്ട്‌സ്റ്റേഷൻ നിരക്ക്',
+    tariffSub: 'തമിഴ്‌നാട് മുഴുവൻ ഫ്ലാറ്റ് കിമി-ഒന്നിന് വില. സർജ് ഇല്ല. ഗുപ്ത ഫീ ഇല്ല. ഒറ്റ-വഴി നിരക്ക് മാത്രം — തിരിച്ചുപോകൽ ചാർജ് ഇല്ല.',
+    passengers: 'യാത്രക്കാർ',
+    luggage: 'ലഗേജ്',
+    extraCharges: 'ഡ്രൈവർ ബേറ്റ & ടോൾ അധിക',
+
+    whyChooseUs: 'ട്രെൻഡിംഗ് ഡ്രോപ്പ് ടാക്സി എന്തുകൊണ്ട് തിരഞ്ഞെടുക്കണം',
+    servicesTitle: 'പ്രീമിയം ക്യാബ് സൗകര്യങ്ങൾ',
+    featuresSub: 'ദക്ഷിണ ഇന്ത്യ മുഴുവൻ കോർപ്പറേറ്റ്, വിനോദ യാത്രകൾക്കായി മികച്ച ഔട്ട്‌സ്റ്റേഷൻ യാത്രാ അനുഭവം.',
+    featTitle1: 'നിങ്ങളുടെ യാത്ര തിരഞ്ഞെടുക്കുക',
+    featDesc1: 'ഞങ്ങളുടെ ഉയർന്ന നിലവാരമുള്ള വാഹനങ്ങളുടെ വൈവിധ്യം പരിശോധിക്കുക, നിങ്ങൾക്ക് ഇഷ്ടപ്പെട്ട പിക്കപ്പ്, തിരിച്ചുപോകൽ തീയതികൾ ഉൾക്കൊള്ളുക.',
+    featTitle2: 'ബുക്ക് ചെയ്ത് സ്ഥിരീകരിക്കുക',
+    featDesc2: 'വിവരങ്ങൾ നൽകുക, WhatsApp വഴി ഉടനടി സ്ഥിരീകരണം ലഭിക്കുക.',
+    featTitle3: 'ബുക്ക് ചെയ്ത് ആസ്വദിക്കുക',
+    featDesc3: 'പ്രൊഫഷണൽ ഡ്രൈവർ, ശുചിത്വമുള്ള വാഹനം, സുതാര്യ ബില്ലിംഗ് ഉള്ള ആശ്വാസദായക യാത്ര.',
+    execStandard: 'എക്സിക്യൂട്ടീവ് നിലവാരം',
+    mechSanitation: 'ഡീപ്-ക്ലീൻ, സർവ്വീസ്ഡ് ക്യാബുകൾ',
+    mechDesc: 'ഓരോ ഔട്ട്‌സ്റ്റേഷൻ ക്യാബും യാത്ര തുടങ്ങുന്നതിന് മുൻപ് മൾട്ടി-പോയിന്റ് പരിശോധനക്ക് വിധേയമാകുന്നു — AC, ടയർ, ഇന്റീരിയർ.',
+
+    destTitle: 'ജനപ്രിയ ഔട്ട്‌സ്റ്റേഷൻ റൂട്ടുകൾ',
+    destSub: 'തമിഴ്‌നാടിലും ദക്ഷിണ ഇന്ത്യയിലും ഏറ്റവുമധികം ബുക്ക് ചെയ്യപ്പെടുന്ന ഒറ്റ-വഴി ഡ്രോപ്പ് ടാക്സി റൂട്ടുകൾ.',
+    popularRoutesTitle: 'ടോപ്പ് ട്രാക്കുകൾ',
+
+    reviewTitle: 'ഉപഭോക്തൃ അഭിപ്രായങ്ങൾ',
+    reviewSub: 'ട്രെൻഡിംഗ് ഡ്രോപ്പ് ടാക്സിയെക്കുറിച്ച് ബിസിനസ്, വിനോദ യാത്രക്കാർ പറയുന്നത്.',
+
+    contactTitle: 'നിങ്ങളുടെ ഔട്ട്‌സ്റ്റേഷൻ ക്യാബ് ബുക്ക് ചെയ്യുക',
+    contactSub: 'തമിഴ്‌നാട് മുഴുവൻ ഔട്ട്‌സ്റ്റേഷൻ ബുക്കിംഗ്, കോർപ്പറേറ്റ് യാത്ര ക്രമീകരണം, ഉടനടി ഡിസ്‌പാച്ച് എന്നിവക്ക് 24/7 ലഭ്യം.',
+    contactHeadingPart1: 'കോർപ്പറേറ്റ് അല്ലെങ്കിൽ വ്യക്തിഗത',
+    contactHeadingPart2: 'ഔട്ട്‌സ്റ്റേഷൻ',
+    contactHeadingAccent: 'യാത്ര ബുക്ക് ചെയ്യുക',
+    location: 'തിരുനെൽവേലി / കോയമ്പത്തൂർ, തമിഴ്‌നാട്',
+    opsHub: '24/7 ബുക്കിംഗ് ഓപ്പറേഷൻസ്',
+    verifiedAgency: 'പരിശോധിച്ച കൊമേഴ്‌സ്യൽ ക്യാബ് ഏജൻസി',
+    whatsappDesk: 'WhatsApp ബുക്കിംഗ് ഡെസ്ക്',
+
+    quickLinks: 'ദ്രുത ലിങ്കുകൾ',
+    contactInfo: 'ബന്ധ വിവരങ്ങൾ',
+    rights: 'എല്ലാ അവകാശങ്ങളും നിക്ഷിപ്തം. ട്രെൻഡിംഗ് ഡ്രോപ്പ് ടാക്സി – പ്രീമിയം ഔട്ട്‌സ്റ്റേഷൻ ക്യാബ് സേവനം, തമിഴ്‌നാട്.',
+    brandFooterDesc: 'ട്രെൻഡിംഗ് ഡ്രോപ്പ് ടാക്സി തമിഴ്‌നാട് മുഴുവൻ ഫ്ലാറ്റ്-റേറ്റ് കിമി-ഒന്നിന് വിലയോടെ പ്രീമിയം ഔട്ട്‌സ്റ്റേഷൻ ക്യാബ് സേവനങ്ങൾ നൽകുന്നു.',
+    footerAddress: 'മെയിൻ ഡിസ്‌പ്ബ്ആക്ഷൻ ഹബ്\nകോയമ്പത്തൂർ ജംഗ്ഷൻ, തമിഴ്‌നാട് – 641001\nഇ-മെയിൽ: ops@trendingtaxi.in',
+
+    reviewsData: [
+      { name: 'ഡോ. ആനന്ദ് ഗോപാലൻ', route: 'ചെന്നൈ നിന്ന് മധുരൈ', text: 'മികച്ച ഔട്ട്‌സ്റ്റേഷൻ ക്യാബ് അനുഭവം. കാർ കളങ്കരഹിതമായിരുന്നു, ഡ്രൈവർക്ക് ഹൈവേ റൂട്ടിൽ അതിശ്രേഷ്ഠ അറിവ് ഉണ്ടായിരുന്നു. ഗുപ്ത ചാർജ് ഇല്ലായിരുന്നു.' },
+      { name: 'മീര കൃഷ്ണൻ', route: 'കോയമ്പത്തൂർ നിന്ന് ബാംഗ്ലൂർ', text: 'ഒറ്റ-വഴി ചാർജ് മറ്റ് ഔട്ട്‌സ്റ്റേഷൻ സേവനങ്ങളെ അപേക്ഷിച്ച് 40% ലാഭിച്ചു. സുതാര്യ ബില്ലിംഗ്, തിരിച്ചുപോകൽ ചാർജ് ഇല്ല.' },
+      { name: 'എസ്. രംഗനാഥൻ', route: 'തിരുനെൽവേലി നിന്ന് ചെന്നൈ', text: 'പ്രൊഫഷണൽ ഔട്ട്‌സ്റ്റേഷൻ ടാക്സി സേവനം. ഓൺലൈൻ കണക്കാക്കൽ അന്തിമ ഇൻവോയ്‌സുമായി കൃത്യമായി ഒത്തു. ഭാവിയിൽ വീണ്ടും ബുക്ക് ചെയ്യും.' },
+    ],
+  },
+
+  // ─────────────────────── TELUGU ──────────────────────────────
+  te: {
+    home: 'హోమ్',
+    about: 'మా గురించి',
+    tariff: 'చార్జీలు',
+    destinations: 'ప్రసిద్ధ గమ్యస్థానాలు',
+    reviews: 'సమీక్షలు',
+    contact: 'సంప్రదించండి',
+    faq: 'తరచుగా అడిగే ప్రశ్నలు',
+    servicesNav: 'సేవలు',
+
+    oneWay: 'ఒక దిశ',
+    roundTrip: 'రౌండ్ ట్రిప్',
+    name: 'మీ పేరు',
+    mobile: 'మొబైల్ నంబర్',
+    pickup: 'పికప్ నగరం / చిరునామా',
+    drop: 'డ్రాప్ నగరం / చిరునామా',
+    date: 'పికప్ తేదీ',
+    time: 'పికప్ సమయం',
+    returnDate: 'తిరిగి వచ్చే తేదీ',
+    returnTime: 'తిరిగి వచ్చే సమయం',
+    selectCar: 'క్యాబ్ రకం ఎంచుకోండి',
+    estimate: 'తక్షణ చార్జ్ అంచనా పొందండి',
+    noReturn: 'రిటర్న్ చార్జ్ లేదు',
+
+    subtitle: 'ప్రీమియం అవుట్‌స్టేషన్ క్యాబ్ సేవ – తమిళనాడు',
+    mainTitle: 'తమిళనాడు అవుట్‌స్టేషన్ టాక్సీ',
+    desc: 'రిటర్న్ చార్జ్ లేదు. దాచిన చార్జీలు లేవు. తమిళనాడు అంతటా ₹16/కి.మీ ఫ్లాట్ రేటు — కోయంబత్తూరు, చెన్నై, మధురై, తిరునెల్వేలి మరియు మరిన్ని. ధృవీకరించబడిన నిపుణులైన డ్రైవర్లు, 24/7.',
+
+    callNow: 'ఇప్పుడు కాల్ చేయండి',
+    activeRides: 'రోజువారీ రైడ్లు',
+    cities: 'కవర్ చేసిన నగరాలు',
+    rating: 'కస్టమర్ రేటింగ్',
+
+    estTitle: 'అవుట్‌స్టేషన్ చార్జ్ అంచనా',
+    totalEst: 'అంచనా చార్జ్',
+    distanceNote: '*నేరుగా లైన్ దూరం ఆధారంగా సుమారు అంచనా. వాస్తవ టోల్ & డ్రైవర్ బాటా చార్జీలు అదనంగా వర్తిస్తాయి.',
+    confirmWhatsApp: 'WhatsApp ద్వారా బుకింగ్ నిర్ధారించండి',
+    close: 'మూసివేయండి',
+
+    services: {
+      drop: { title: 'డ్రాప్ సేవ', desc: 'రిటర్న్ చార్జ్ లేని ఒక దిశ ప్రయాణాలు. మీరు ప్రయాణించే దూరానికి మాత్రమే చెల్లించండి.' },
+      outstation: { title: 'అవుట్‌స్టేషన్ టాక్సీ', desc: 'తమిళనాడు మరియు పక్క రాష్ట్రాల్లో దీర్ఘ దూర ప్రయాణానికి సౌకర్యవంతమైన రైడ్లు.' },
+      roundtrip: { title: 'రౌండ్ ట్రిప్', desc: 'అదే డ్రైవర్ మరియు కారుతో రెండు-దిశ బుకింగ్. చిన్న సందర్శనలు లేదా వ్యాపారానికి అనువైనది.' },
+      airport: { title: 'ఎయిర్‌పోర్ట్ ట్రాన్స్ఫర్', desc: 'చెన్నై, కోయంబత్తూరు, మధురై ప్రధాన విమానాశ్రయాల నుండి విశ్వసనీయ పికప్ డ్రాప్.' },
+      hourly: { title: 'గంటల వాడుక', desc: 'నగర వినియోగానికి డ్రైవర్‌తో క్యాబ్ అద్దెకు తీసుకోండి. సమావేశాలు, పనులకు అనువైనది.' },
+      wedding: { title: 'వివాహ టాక్సీ సేవ', desc: 'అతిథులు, వధూవరులు పికప్, కుటుంబ రవాణాకు అనేక కారు ఎంపికలు.' },
+      corporate: { title: 'కార్పొరేట్ ప్రయాణం', desc: 'కార్యాలయాలు, వ్యాపార ప్రయాణికులు, కంపెనీ టై-అప్‌లకు టాక్సీ పరిష్కారాలు.' },
+      temple: { title: 'ఆలయ పర్యటనలు', desc: 'తిరుపతి, రామేశ్వరం, పళని, మధురై మరియు మరిన్ని స్థలాలకు ఫిక్సెడ్-రేట్ ప్యాకేజీలు.' },
+      hill: { title: 'హిల్ స్టేషన్ రైడ్లు', desc: 'ఊటీ, కొడైకనాల్, యేర్కాడ్ ప్రయాణాలకు సురక్షితమైన మరియు అనుభవజ్ఞులైన డ్రైవర్లు.' },
+      pet: { title: 'పెట్-ఫ్రెండ్లీ టాక్సీ', desc: 'పెంపుడు జంతువులను సురక్షితంగా మరియు సౌకర్యంగా తీసుకెళ్లడానికి ప్రత్యేక స్థలం.' },
+      group: { title: 'గ్రూప్ టాక్సీ / MUV', desc: 'కుటుంబ లేదా గ్రూప్ ప్రయాణానికి 6–7 సీటర్ ఎంపికలు, అదనపు లగేజ్ సామర్థ్యంతో.' },
+      senior: { title: 'వృద్ధ పౌర ప్రయాణం', desc: 'వయసైన ప్రయాణికులకు మర్యాదగా, ఓపికగల డ్రైవర్లు మరియు ప్రత్యేక సహాయం.' },
+    },
+
+    transparentTariff: 'పారదర్శక అవుట్‌స్టేషన్ చార్జ్',
+    tariffSub: 'తమిళనాడు అంతటా ఫ్లాట్ పర్-కి.మీ ధర. సర్జ్ శూన్యం. దాచిన రుసుం శూన్యం. కేవలం ఒక-దిశ చార్జ్ — రిటర్న్ చార్జ్ లేదు.',
+    passengers: 'ప్రయాణికులు',
+    luggage: 'సామాను',
+    extraCharges: 'డ్రైవర్ బాటా & టోల్ అదనపు',
+
+    whyChooseUs: 'ట్రెండింగ్ డ్రాప్ టాక్సీ ఎందుకు ఎంచుకోవాలి',
+    servicesTitle: 'ప్రీమియం క్యాబ్ సదుపాయాలు',
+    featuresSub: 'దక్షిణ భారతదేశం అంతటా కార్పొరేట్ మరియు వినోద ప్రయాణాలకు అత్యుత్తమ అవుట్‌స్టేషన్ ప్రయాణ అనుభవం.',
+    featTitle1: 'మీ రైడ్ ఎంచుకోండి',
+    featDesc1: 'మా ఉన్నత-స్థాయి వాహనాల వైవిధ్యాన్ని పరిశీలించండి, మీకు నచ్చిన పికప్ మరియు తిరిగి వచ్చే తేదీలు ఎంచుకోండి.',
+    featTitle2: 'బుక్ చేసి నిర్ధారించండి',
+    featDesc2: 'వివరాలు నమోదు చేయండి మరియు WhatsApp ద్వారా తక్షణ నిర్ధారణ పొందండి.',
+    featTitle3: 'బుక్ చేసి ఆనందించండి',
+    featDesc3: 'నిపుణులైన డ్రైవర్, పరిశుభ్రమైన వాహనం, పారదర్శకమైన బిల్లింగ్‌తో నిష్పూచీ ప్రయాణం.',
+    execStandard: 'ఎగ్జిక్యూటివ్ స్టాండర్డ్',
+    mechSanitation: 'డీప్-క్లీన్డ్ & సర్వీస్డ్ క్యాబ్‌లు',
+    mechDesc: 'ప్రతి అవుట్‌స్టేషన్ క్యాబ్ బయలుదేరే ముందు మల్టీ-పాయింట్ తనిఖీకి లోనవుతుంది — AC, టైర్లు, ఇంటీరియర్ ధృవీకరించబడింది.',
+
+    destTitle: 'ప్రసిద్ధ అవుట్‌స్టేషన్ మార్గాలు',
+    destSub: 'తమిళనాడు మరియు దక్షిణ భారతదేశంలో అత్యధికంగా బుక్ చేయబడిన ఒక-దిశ డ్రాప్ టాక్సీ మార్గాలు.',
+    popularRoutesTitle: 'టాప్ ట్రాక్‌లు',
+
+    reviewTitle: 'కస్టమర్ సమీక్షలు',
+    reviewSub: 'ట్రెండింగ్ డ్రాప్ టాక్సీ గురించి వ్యాపార మరియు వినోద ప్రయాణికులు ఏమి చెప్తున్నారు.',
+
+    contactTitle: 'మీ అవుట్‌స్టేషన్ క్యాబ్ బుక్ చేయండి',
+    contactSub: 'తమిళనాడు అంతటా అవుట్‌స్టేషన్ బుకింగ్‌లు, కార్పొరేట్ ప్రయాణ ఏర్పాట్లు, తక్షణ డిస్పాచ్‌కు 24/7 అందుబాటులో.',
+    contactHeadingPart1: 'కార్పొరేట్ లేదా వ్యక్తిగత',
+    contactHeadingPart2: 'అవుట్‌స్టేషన్',
+    contactHeadingAccent: 'ప్రయాణాలు బుక్ చేయండి',
+    location: 'తిరునెల్వేలి / కోయంబత్తూరు, తమిళనాడు',
+    opsHub: '24/7 బుకింగ్ ఆపరేషన్స్',
+    verifiedAgency: 'ధృవీకరించబడిన వాణిజ్య క్యాబ్ ఏజెన్సీ',
+    whatsappDesk: 'WhatsApp బుకింగ్ డెస్క్',
+
+    quickLinks: 'శీఘ్ర లింకులు',
+    contactInfo: 'సంప్రదింపు సమాచారం',
+    rights: 'అన్ని హక్కులూ రిజర్వ్ చేయబడ్డాయి. ట్రెండింగ్ డ్రాప్ టాక్సీ – ప్రీమియం అవుట్‌స్టేషన్ క్యాబ్ సేవ, తమిళనాడు.',
+    brandFooterDesc: 'ట్రెండింగ్ డ్రాప్ టాక్సీ తమిళనాడు అంతటా ఫ్లాట్-రేట్ పర్-కి.మీ ధరతో ప్రీమియం అవుట్‌స్టేషన్ క్యాబ్ సేవలు అందిస్తుంది.',
+    footerAddress: 'మెయిన్ డిస్పాచ్ హబ్\nకోయంబత్తూరు జంక్షన్, తమిళనాడు – 641001\nఇమెయిల్: ops@trendingtaxi.in',
+
+    reviewsData: [
+      { name: 'డా. ఆనంద్ గోపాలన్', route: 'చెన్నై నుండి మధురై', text: 'అత్యుత్తమ అవుట్‌స్టేషన్ క్యాబ్ అనుభవం. కారు నిర్దోషంగా ఉంది మరియు డ్రైవర్‌కు హైవే మార్గంలో అద్భుతమైన జ్ఞానం ఉంది. దాచిన చార్జీలు లేవు.' },
+      { name: 'మీరా కృష్ణన్', route: 'కోయంబత్తూరు నుండి బెంగళూరు', text: 'ఒక-దిశ చార్జ్ ఇతర అవుట్‌స్టేషన్ సేవలతో పోలిస్తే దాదాపు 40% ఆదా చేసింది. పారదర్శక బిల్లింగ్, రిటర్న్ చార్జ్ లేదు.' },
+      { name: 'ఎస్. రంగనాథన్', route: 'తిరునెల్వేలి నుండి చెన్నై', text: 'నిపుణులైన అవుట్‌స్టేషన్ టాక్సీ సేవ. ఆన్‌లైన్ అంచనా తుది ఇన్వాయిస్‌తో సరిగ్గా సరిపోయింది. తమిళనాడు ప్రయాణాలకు మళ్లీ బుక్ చేస్తాను.' },
     ],
   },
 };

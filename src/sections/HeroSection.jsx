@@ -15,7 +15,7 @@ export default function HeroSection({
 }) {
   const D = dark;
   const canvasRef = useRef(null);
-
+console.log(t)
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -343,22 +343,22 @@ const onSubmit = (e) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <Field label={t.name} dark={D} style={{ animationDelay: '420ms' }} className="pro-animate-scale">
                   <User className="h-3.5 w-3.5 text-amber-500" />
-                  <input type="text" name="name" required placeholder="Sundar Kandan" value={formData.name} onChange={onInputChange} className="bg-transparent w-full text-xs focus:outline-none font-medium text-current" />
+                  <input type="text" name="name" required  value={formData.name} onChange={onInputChange} className="bg-transparent w-full text-xs focus:outline-none font-medium text-current" />
                 </Field>
 
                 <Field label={t.mobile} dark={D} style={{ animationDelay: '470ms' }} className="pro-animate-scale">
                   <Phone className="h-3.5 w-3.5 text-amber-500" />
-                  <input type="tel" name="mobile" required placeholder="9876543210" value={formData.mobile} onChange={onInputChange} className="bg-transparent w-full text-xs focus:outline-none font-medium text-current" />
+                  <input type="tel" name="mobile" required  value={formData.mobile} onChange={onInputChange} className="bg-transparent w-full text-xs focus:outline-none font-medium text-current" />
                 </Field>
 
                 <Field label={t.pickup} dark={D} style={{ animationDelay: '520ms' }} className="pro-animate-scale">
                   <MapPin className="h-3.5 w-3.5 text-amber-500" />
-                  <input type="text" name="pickupAddress" required placeholder="Coimbatore Airport (CJB)" value={formData.pickupAddress} onChange={onInputChange} className="bg-transparent w-full text-xs focus:outline-none font-medium text-current" />
+                  <input type="text" name="pickupAddress" required  value={formData.pickupAddress} onChange={onInputChange} className="bg-transparent w-full text-xs focus:outline-none font-medium text-current" />
                 </Field>
 
                 <Field label={t.drop} dark={D} style={{ animationDelay: '570ms' }} className="pro-animate-scale">
                   <Navigation className="h-3.5 w-3.5 text-yellow-500" />
-                  <input type="text" name="dropAddress" required placeholder="Ambasamudram, Tirunelveli" value={formData.dropAddress} onChange={onInputChange} className="bg-transparent w-full text-xs focus:outline-none font-medium text-current" />
+                  <input type="text" name="dropAddress" required  value={formData.dropAddress} onChange={onInputChange} className="bg-transparent w-full text-xs focus:outline-none font-medium text-current" />
                 </Field>
 
                 <Field label={t.date} dark={D} style={{ animationDelay: '620ms' }} className="pro-animate-scale">
@@ -406,7 +406,7 @@ const onSubmit = (e) => {
                             : 'bg-zinc-50 border-zinc-200 hover:border-zinc-300'
                       }`}
                     >
-                      <img src={value.slides[0]} alt={value.name.en} className="h-7 sm:h-7 w-auto object-contain pointer-events-none mb-1" />
+                      <img src={value.slides[0].img} alt={value.name.en} className="h-7 sm:h-7 w-auto object-contain pointer-events-none mb-1" />
                       <div>
                         <div className="text-[9px] font-bold uppercase tracking-tight text-current">
                           {value.name.en.split(' ')[1] || value.name.en}

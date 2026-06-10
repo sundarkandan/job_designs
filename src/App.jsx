@@ -17,6 +17,8 @@ import DestinationsSection from './sections/DestinationsSection';
 import ReviewsSection from './sections/ReviewsSection';
 import ContactSection from './sections/ContactSection';
 import FooterSection from './sections/FooterSection';
+import ServicesSection from './sections/ServicesSection';
+import FAQSection from './sections/FAQSection';
 
 /* ── Google Fonts ── */
 if (typeof document !== 'undefined') {
@@ -55,6 +57,7 @@ useSEO(lang); // lang change ஆனா meta auto-update ஆகும்
   const [estimateModal, setEstimateModal] = useState({ isOpen: false, price: 0, distance: 0 });
 
   const t = translations[lang];
+  
 
   /* ── Preload images ── */
   useEffect(() => {
@@ -82,14 +85,14 @@ useSEO(lang); // lang change ஆனா meta auto-update ஆகும்
     }
   };
 
-  const handleLangChange = () => {
-    setLangChanging(true);
-    setTimeout(() => {
-      setLang(prev => (prev === 'en' ? 'ta' : 'en'));
-      setLangChanging(false);
-    }, 450);
-  };
+ const handleLangChange = (code) => {
+  setLangChanging(true);
 
+  setTimeout(() => {
+    setLang(code);
+    setLangChanging(false);
+  }, 450);
+};
   const handleInputChange = (e) =>
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
@@ -148,7 +151,7 @@ useSEO(lang); // lang change ஆனா meta auto-update ஆகும்
         <div className="text-center">
           <h2 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
             className="text-4xl font-black uppercase tracking-[0.2em] reveal-text">
-            TRENDING DROP
+            TRENDING DROP TAXI
           </h2>
           <p className="mt-4 text-[10px] tracking-[0.4em] font-mono text-zinc-600 uppercase">
             System Synchronizing...
@@ -234,12 +237,15 @@ useSEO(lang); // lang change ஆனா meta auto-update ஆகும்
   lang={lang}     // Pass the 'lang' state variable correctly
 />
         <AboutSection dark={dark} t={t} />
+       
+<ServicesSection dark={dark} t={t} />
        <DestinationsSection 
   t={t} 
   onScroll={scrollTo} 
   lang={lang} // Pass the active language state
 />
         <ReviewsSection dark={dark} t={t} />
+        <FAQSection dark={dark} lang={lang} />
         <ContactSection dark={dark} t={t} />
         <FooterSection dark={dark} t={t} onScroll={scrollTo} />
 

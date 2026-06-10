@@ -10,13 +10,28 @@ import {
   Sun,
   Moon,
   MessageCircle,
-  CarTaxiFront
+  CarTaxiFront,
+  MessageCircleQuestionMark,
+  LayoutPanelLeft,
+  ChevronDown,
+  Check
 } from "lucide-react";
-import Logo from "./1780410771882.png"
+import { IoLogoWhatsapp } from "react-icons/io";
+import Logo from "./1780410771882.png";
 import { motion, AnimatePresence } from 'framer-motion';
 import { WHATSAPP_NUMBER, PHONE_NUMBER } from '../constants/vehicles';
 
-const NAV_KEYS = ['home', 'tariff', 'about', 'destinations', 'reviews', 'contact'];
+const NAV_KEYS = ['home', 'tariff', 'about', 'services', 'destinations', 'reviews', 'faq', 'contact'];
+
+// ── Language config ──────────────────────────────────────────────
+const LANGUAGES = [
+  { code: 'en', label: 'English',    nativeLabel: 'English',    flag: '🇬🇧' },
+  { code: 'ta', label: 'Tamil',      nativeLabel: 'தமிழ்',      flag: '🇮🇳' },
+  { code: 'hi', label: 'Hindi',      nativeLabel: 'हिन्दी',     flag: '🇮🇳' },
+  { code: 'kn', label: 'Kannada',    nativeLabel: 'ಕನ್ನಡ',      flag: '🇮🇳' },
+  { code: 'ml', label: 'Malayalam',  nativeLabel: 'മലയാളം',     flag: '🇮🇳' },
+  { code: 'te', label: 'Telugu',     nativeLabel: 'తెలుగు',     flag: '🇮🇳' },
+];
 
 export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll }) {
   const [activeSection, setActiveSection] = useState('home');
@@ -24,7 +39,9 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navTabsRef = useRef({});
   const isScrollingRef = useRef(false);
-  const [isLangOpen, setIsLangOpen] = useState(false);
+  const scrollTimerRef = useRef(null);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
+  const langDropdownRef = useRef(null);
   const [navOpen, setNavOpen] = useState(false);
   const [isContactVisible, setIsContactVisible] = useState(false);
 
@@ -34,33 +51,47 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
   const dragStartRibbonY = useRef(null);
   const ribbonRef = useRef(null);
 
+  const currentLang = LANGUAGES.find(l => l.code === lang) || LANGUAGES[0];
+
   const MOBILE_NAV = [
-    { id: "home",         icon: House,            label: t.home },
-    { id: "tariff",       icon: BadgeIndianRupee, label: t.tariff },
-    { id: "about",        icon: Info,             label: t.about },
-    { id: "destinations", icon: MapPinned,        label: t.destinations },
-    { id: "reviews",      icon: Star,             label: t.reviews },
-    { id: "contact",      icon: Phone,            label: t.contact },
+    { id: "home",         icon: House,                     label: t.home },
+    { id: "tariff",       icon: BadgeIndianRupee,          label: t.tariff },
+    { id: "about",        icon: Info,                      label: t.about },
+    { id: "services",     icon: LayoutPanelLeft,           label: t.servicesNav },
+    { id: "destinations", icon: MapPinned,                 label: t.destinations },
+    { id: "reviews",      icon: Star,                      label: t.reviews },
+    { id: "faq",          icon: MessageCircleQuestionMark, label: t.faq },
+    { id: "contact",      icon: Phone,                     label: t.contact },
   ];
 
-  // ── ✅ FIX 1: Contact visibility observer — ONLY sets isContactVisible ──
+  // ── Close dropdown on outside click ─────────────────────────
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (langDropdownRef.current && !langDropdownRef.current.contains(e.target)) {
+        setLangDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, []);
+
+  // ── Contact visibility observer ──────────────────────────────
   useEffect(() => {
     const contactSection = document.getElementById('contact');
     if (!contactSection) return;
-
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        // ✅ ONLY toggle floating button visibility — no setActiveSection here
-        setIsContactVisible(entry.isIntersecting);
-      },
+      ([entry]) => setIsContactVisible(entry.isIntersecting),
       { threshold: 0.1 }
     );
-
     observer.observe(contactSection);
     return () => observer.unobserve(contactSection);
   }, []);
 
-  // ── Automatic "Peep" animation on mount ──────────────────────
+  // ── Auto "Peep" animation on mount ──────────────────────────
   useEffect(() => {
     const timer = setTimeout(() => {
       setNavOpen(true);
@@ -69,28 +100,70 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
     return () => clearTimeout(timer);
   }, []);
 
-  // ── ✅ FIX 2: Section observers — correct threshold + immediate click fix ──
+  // ── Scroll-position-based active section detection ───────────
+  // This approach is far more reliable than IntersectionObserver for
+  // jump navigation: on every scroll event we measure each section's
+  // top offset and pick whichever one is closest to the viewport top.
   useEffect(() => {
-    const observers = [];
-    NAV_KEYS.forEach((key) => {
-      const element = document.getElementById(key);
-      if (element) {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting && !isScrollingRef.current) {
-              setActiveSection(key);
-            }
-          },
-          { threshold: 0.1, rootMargin: "-5% 0px -5% 0px" } // ✅ 0.1 threshold
-        );
-        observer.observe(element);
-        observers.push({ observer, element });
-      }
-    });
-    return () => observers.forEach(({ observer, element }) => observer.unobserve(element));
-  }, []);
+    const getActiveSection = () => {
+      // Don't override while a programmatic scroll is in flight
+      if (isScrollingRef.current) return;
 
-  // ── Pill position update ──────────────────────────────────────
+      const scrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+
+      // Collect all sections with their positions
+      const sections = NAV_KEYS.map((key) => {
+        const el = document.getElementById(key);
+        if (!el) return null;
+        const rect = el.getBoundingClientRect();
+        const top = rect.top + scrollY; // absolute top from document
+        return { key, top, bottom: top + rect.height };
+      }).filter(Boolean);
+
+      if (sections.length === 0) return;
+
+      // At the very bottom of the page always mark last section active
+      const pageBottom = document.documentElement.scrollHeight;
+      if (scrollY + viewportHeight >= pageBottom - 5) {
+        setActiveSection(sections[sections.length - 1].key);
+        return;
+      }
+
+      // Find the section whose top is nearest to (but not past) 30% of viewport
+      const triggerLine = scrollY + viewportHeight * 0.3;
+
+      let best = sections[0];
+      for (const section of sections) {
+        if (section.top <= triggerLine) {
+          best = section;
+        }
+      }
+
+      setActiveSection(best.key);
+    };
+
+    // Throttle with requestAnimationFrame for performance
+    let rafId = null;
+    const onScroll = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        getActiveSection();
+        rafId = null;
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Run once immediately to set the correct state on mount
+    getActiveSection();
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
+  }, []); // no deps — NAV_KEYS is constant
+
+  // ── Pill position update ─────────────────────────────────────
   useEffect(() => {
     const activeTab = navTabsRef.current[activeSection];
     if (activeTab) {
@@ -98,18 +171,28 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
     }
   }, [activeSection, lang]);
 
-  // ── ✅ FIX 3: handleScroll — force activeSection immediately on click ──
+  // ── Scroll handler ───────────────────────────────────────────
   const handleScroll = (id) => {
     const element = document.getElementById(id);
     if (element) {
+      // Mark programmatic scroll so the scroll listener doesn't fight us
       isScrollingRef.current = true;
-      setActiveSection(id); // ← Force active immediately
+      setActiveSection(id);
       element.scrollIntoView({ behavior: 'smooth' });
-      setTimeout(() => {
+
+      // Clear any existing timer before setting a new one
+      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+      scrollTimerRef.current = setTimeout(() => {
         isScrollingRef.current = false;
-      }, 1000);
+      }, 1200);
     }
     setIsMobileMenuOpen(false);
+  };
+
+  // ── Language select handler ──────────────────────────────────
+  const handleLangSelect = (code) => {
+    onLangChange(code);
+    setLangDropdownOpen(false);
   };
 
   // ── Drag handlers ─────────────────────────────────────────────
@@ -141,12 +224,10 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
   useEffect(() => {
     const moveHandler = (e) => onDragMove(e);
     const endHandler = () => onDragEnd();
-
     window.addEventListener('mousemove', moveHandler);
     window.addEventListener('mouseup', endHandler);
     window.addEventListener('touchmove', moveHandler, { passive: false });
     window.addEventListener('touchend', endHandler);
-
     return () => {
       window.removeEventListener('mousemove', moveHandler);
       window.removeEventListener('mouseup', endHandler);
@@ -156,168 +237,81 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
   }, [ribbonY]);
 
   return (
-    <>
-      <nav className="fixed no-scrollbar overflow-y-auto top-0 left-0 right-0 z-50 p-4 transition-all duration-500">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-500">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
 
-          {/* POD 1: Logo */}
-          <div className={`flex items-center h-16 px-4 rounded-2xl border backdrop-blur-md ${dark ? 'bg-zinc-950/90 border-[#eab308]' : 'bg-white/95 border-[#eab308]'}`}>
-            <button className="flex items-center h-full py-2 cursor-pointer" onClick={() => handleScroll('home')}>
-              <img src={Logo} alt="Trending Drop Taxi" className="h-full w-auto object-contain scale-110" />
-            </button>
-          </div>
-
-          {/* POD 2: Desktop Center Dock */}
-          <div className={`hidden md:flex items-center h-14 px-2 rounded-2xl border backdrop-blur-xl transition-colors duration-300 relative shadow-lg ${
-            dark ? 'bg-zinc-900/60 border-zinc-800' : 'bg-white/60 border-zinc-200'
-          }`}>
-            <div className="flex items-center gap-1 relative">
-              {/* Animated Active Pill */}
-              <span
-                className="absolute h-8 rounded-xl bg-[#eab308] shadow-[0_0_15px_rgba(234,179,8,0.4)] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
-                style={{ left: `${pillStyle.left}px`, width: `${pillStyle.width}px` }}
-              />
-              {NAV_KEYS.map(key => (
-                <button
-                  key={key}
-                  ref={el => navTabsRef.current[key] = el}
-                  onClick={() => handleScroll(key)}
-                  className={`relative px-5 py-2 text-[11px] font-black uppercase tracking-widest rounded-xl z-10 transition-colors duration-300 ${
-                    activeSection === key
-                      ? 'text-black'
-                      : dark
-                        ? 'text-zinc-400 hover:text-zinc-100'
-                        : 'text-zinc-600 hover:text-zinc-900'
-                  }`}
-                >
-                  {t[key]}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* POD 3: Controls */}
-          <div className={`shrink-0 flex items-center h-14 gap-2 px-3 rounded-2xl border backdrop-blur-md ${dark ? 'bg-zinc-950/90 border-[#eab308]' : 'bg-white/95 border-[#eab308]'}`}>
-            <button onClick={onLangChange} className="text-[10px] font-black uppercase text-zinc-500 hover:text-[#eab308] flex items-center gap-1">
-              <Globe className="h-4 w-4" /> {lang === 'en' ? 'TA' : 'EN'}
-            </button>
-            <button onClick={() => setDark(!dark)} className="p-2 text-[#eab308]">
-              {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
-          </div>
+        {/* POD 1: Logo */}
+        <div className={`flex items-center h-14 px-3 rounded-2xl border backdrop-blur-md shrink-0 ${dark ? 'bg-zinc-950/90 border-[#eab308]' : 'bg-white/95 border-[#eab308]'}`}>
+          <button onClick={() => handleScroll('home')} className="h-full py-1">
+            <img src={Logo} alt="Logo" className="h-full w-auto object-contain" />
+          </button>
         </div>
 
-        {/* ── MOBILE RIBBON NAV (draggable vertically) ─────────────── */}
-        <div
-          ref={ribbonRef}
-          className="md:hidden fixed right-0 z-[9999]"
-          style={{ top: `${ribbonY}%`, transform: 'translateY(-50%)' }}
-        >
-          <motion.div
-            initial={false}
-            animate={{ x: navOpen ? 0 : "70%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="flex items-center"
-          >
-            {/* Handle */}
-            <div className="flex flex-col w-8 rounded-l-2xl overflow-hidden shadow-lg">
-              {/* Drag grip */}
-              <div
-                onMouseDown={onDragStart}
-                onTouchStart={onDragStart}
-                className="w-full bg-[#eab308] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
-                style={{ height: '28px' }}
-                title="Drag to reposition"
-              >
-                <span className="flex flex-col gap-[3px] items-center">
-                  <span className="w-3 h-[2px] bg-black rounded-full" />
-                  <span className="w-3 h-[2px] bg-black rounded-full" />
-                  <span className="w-3 h-[2px] bg-black rounded-full" />
-                </span>
-              </div>
-              {/* Toggle button */}
+        {/* POD 2: Desktop Center Dock */}
+        <div className={`hidden lg:flex items-center h-14 px-2 rounded-2xl border backdrop-blur-xl shadow-lg min-w-0 overflow-x-auto ${
+          dark ? 'bg-zinc-900/60 border-zinc-800' : 'bg-white/60 border-zinc-200'
+        }`}>
+          <div className="flex items-center gap-1 relative">
+            <span
+              className="absolute h-9 rounded-xl bg-[#eab308] transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)]"
+              style={{ left: `${pillStyle.left}px`, width: `${pillStyle.width}px`, maxWidth: '100%' }}
+            />
+            {NAV_KEYS.map(key => (
               <button
-                onClick={() => setNavOpen(!navOpen)}
-                className="w-full bg-[#eab308] flex items-center justify-center text-black"
-                style={{ height: '52px' }}
+                key={key}
+                ref={el => navTabsRef.current[key] = el}
+                onClick={() => handleScroll(key)}
+                className={`relative px-2 py-2 text-[9px] font-black uppercase tracking-normal rounded-xl whitespace-nowrap transition-colors duration-300 ${
+                  activeSection === key ? 'text-black' : dark ? 'text-zinc-400' : 'text-zinc-600'
+                }`}
               >
-                <motion.div animate={{ rotate: navOpen ? 180 : 0 }}>
-                  <span className="font-bold text-lg">◀</span>
-                </motion.div>
+                {key === 'services' ? t.servicesNav : t[key] || key}
               </button>
-            </div>
-
-            {/* Menu icons panel */}
-            <div className={`py-4 px-2 rounded-r-2xl border-y border-r shadow-2xl backdrop-blur-xl ${
-              dark ? "bg-zinc-900/95 border-zinc-700" : "bg-white/95 border-zinc-200"
-            }`}>
-              <div className="flex flex-col gap-6 items-center">
-                {MOBILE_NAV.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => {
-                      handleScroll(item.id);
-                      setNavOpen(false);
-                    }}
-                    className={`p-2 rounded-xl transition-all duration-300 ${
-                      activeSection === item.id
-                        ? "bg-[#eab308] text-black"
-                        : dark
-                        ? "text-zinc-400"
-                        : "text-zinc-500"
-                    }`}
-                  >
-                    <item.icon size={22} strokeWidth={2} />
-                  </button>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+            ))}
+          </div>
         </div>
-      </nav>
 
-      {/* ── ✅ FIXED: Floating buttons — hide when contact visible OR nav open ── */}
-      <AnimatePresence>
-        {!navOpen && (
-          <motion.div
-            key="floating-buttons"
-            initial={{ opacity: 0, scale: 0.7, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.7, y: 20 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col gap-2"
-          >
-            {/* WhatsApp */}
-            <motion.a
-              href={`https://wa.me/${WHATSAPP_NUMBER}`}
-              target="_blank"
-              rel="noreferrer"
-              animate={{
-                scale: [1, 1.1, 1],
-                boxShadow: [
-                  "0px 0px 0px rgba(16, 185, 129, 0)",
-                  "0px 0px 20px rgba(16, 185, 129, 0.6)",
-                  "0px 0px 0px rgba(16, 185, 129, 0)"
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="p-3 rounded-full bg-emerald-500 text-white shadow-2xl hover:bg-emerald-400"
-            >
-              <MessageCircle className="h-5 w-5 stroke-[2.5]" />
-            </motion.a>
+        {/* POD 3: Controls */}
+        <div className={`shrink-0 flex items-center h-14 gap-2 px-3 rounded-2xl border backdrop-blur-md ${dark ? 'bg-zinc-950/90 border-[#eab308]' : 'bg-white/95 border-[#eab308]'}`}>
 
-            {/* Phone */}
-            <motion.a
-              href={`tel:${PHONE_NUMBER}`}
-              animate={{ rotate: [0, -15, 15, -15, 0] }}
-              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3, ease: "easeInOut" }}
-              className="p-3 rounded-full bg-amber-500 text-zinc-950 shadow-2xl hover:bg-amber-400"
+          <div className="relative" ref={langDropdownRef}>
+            <button
+              onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+              className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-[10px] font-bold uppercase text-amber-500 hover:bg-amber-500/10 transition-all"
             >
-              <Phone className="h-5 w-5 stroke-[2.5]" />
-            </motion.a>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+              <Globe className="h-3 w-3" />
+              {lang}
+              <ChevronDown className="h-3 w-3" />
+            </button>
+
+            {/* Dropdown */}
+            <AnimatePresence>
+              {langDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute right-0 top-full mt-2 min-w-[180px] max-w-[220px] rounded-xl border border-zinc-700 bg-zinc-900 shadow-2xl p-1 z-[100]"
+                >
+                  {LANGUAGES.map((l) => (
+                    <button
+                      key={l.code}
+                      onClick={() => handleLangSelect(l.code)}
+                      className="w-full text-left px-3 py-2 text-[11px] text-white hover:bg-zinc-800 rounded-lg uppercase"
+                    >
+                      {l.label}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <button onClick={() => setDark(!dark)} className="p-1.5 text-[#eab308]">
+            {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
+        </div>
+      </div>
+    </nav>
   );
 }
