@@ -270,7 +270,99 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
             ))}
           </div>
         </div>
+{/* ── MOBILE RIBBON NAV (draggable vertically) ─────────────── */}
+      <div
+        ref={ribbonRef}
+        className="lg:hidden fixed right-0 z-[9999]"
+        style={{ top: `${ribbonY}%`, transform: 'translateY(-50%)' }}
+      >
+        <motion.div
+          initial={false}
+          animate={{ x: navOpen ? 0 : "70%" }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="flex items-center"
+        >
+          {/* Handle */}
+          <div className="flex flex-col w-8 rounded-l-2xl overflow-hidden shadow-lg">
+            {/* Drag grip */}
+            <div
+              onMouseDown={onDragStart}
+              onTouchStart={onDragStart}
+              className="w-full bg-[#eab308] flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+              style={{ height: '28px' }}
+            >
+              <span className="flex flex-col gap-[3px] items-center">
+                <span className="w-3 h-[2px] bg-black rounded-full" />
+                <span className="w-3 h-[2px] bg-black rounded-full" />
+                <span className="w-3 h-[2px] bg-black rounded-full" />
+              </span>
+            </div>
+            {/* Toggle button */}
+            <button
+              onClick={() => setNavOpen(!navOpen)}
+              className="w-full bg-[#eab308] flex items-center justify-center text-black"
+              style={{ height: '52px' }}
+            >
+              <motion.div animate={{ rotate: navOpen ? 180 : 0 }}>
+                <span className="font-bold text-lg">◀</span>
+              </motion.div>
+            </button>
+          </div>
 
+          {/* Menu icons panel */}
+          <div className={`py-4 px-2 rounded-r-2xl border-y border-r shadow-2xl backdrop-blur-xl ${
+            dark ? "bg-zinc-900/95 border-zinc-700" : "bg-white/95 border-zinc-200"
+          }`}>
+            <div className="flex flex-col gap-5 items-center">
+              {MOBILE_NAV.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    handleScroll(item.id);
+                    setNavOpen(false);
+                  }}
+                  className={`p-2 rounded-xl transition-all duration-300 ${
+                    activeSection === item.id
+                      ? "bg-[#eab308] text-black"
+                      : dark ? "text-zinc-400" : "text-zinc-500"
+                  }`}
+                >
+                  <item.icon size={22} strokeWidth={2} />
+                </button>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+      <AnimatePresence>
+  {!navOpen && (
+    <motion.div
+      key="floating-buttons"
+      initial={{ opacity: 0, scale: 0.7, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.7, y: 20 }}
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex flex-col gap-3"
+    >
+      {/* WhatsApp - Increased padding and icon size */}
+      <motion.a
+        href={`https://wa.me/${WHATSAPP_NUMBER}`}
+        target="_blank"
+        rel="noreferrer"
+        className="p-4 rounded-full bg-emerald-500 text-white shadow-2xl hover:bg-emerald-400 transition-transform hover:scale-105"
+      >
+        <MessageCircle className="h-6 w-6" strokeWidth={2.5} />
+      </motion.a>
+
+      {/* Phone - Increased padding and icon size */}
+      <motion.a
+        href={`tel:${PHONE_NUMBER}`}
+        className="p-4 rounded-full bg-amber-500 text-zinc-950 shadow-2xl hover:bg-amber-400 transition-transform hover:scale-105"
+      >
+        <Phone className="h-6 w-6" strokeWidth={2.5} />
+      </motion.a>
+    </motion.div>
+  )}
+</AnimatePresence>
         {/* POD 3: Controls */}
         <div className={`shrink-0 flex items-center h-14 gap-2 px-3 rounded-2xl border backdrop-blur-md ${dark ? 'bg-zinc-950/90 border-[#eab308]' : 'bg-white/95 border-[#eab308]'}`}>
 
