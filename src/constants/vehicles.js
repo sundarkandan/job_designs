@@ -24,6 +24,7 @@ export const vehicles = {
   sedan: {
     name: { en: 'Premium Sedan', ta: 'பிரீமியம் செடான்' },
     rate: 16,
+    rate2:14,
     tag: { en: 'Dzire / Etios', ta: 'டிசையர் / எட்டியோஸ்' },
     seats: '4+1',
     bags: '2 Bags',
@@ -32,6 +33,7 @@ export const vehicles = {
   suv: {
     name: { en: 'Executive SUV', ta: 'எக்ஸிகியூட்டிவ் எஸ்யூவி' },
     rate: 20,
+    rate2:19,
     tag: { en: 'Ertiga / Marazzo', ta: 'எர்டிகா / மராசோ' },
     seats: '6+1',
     bags: '4 Bags',
@@ -40,6 +42,8 @@ export const vehicles = {
   innova: {
     name: { en: 'Innova Premium', ta: 'இன்னோவா பிரீமியம்' },
     rate: 21,
+    rate2:20,
+
     tag: { en: 'Innova High-Roof', ta: 'இன்னோவா ஹை-ரூஃப்' },
     seats: '7+1',
     bags: '5 Bags',
@@ -48,6 +52,7 @@ export const vehicles = {
   crysta: {
     name: { en: 'Innova Crysta Elite', ta: 'இன்னோவா கிறிஸ்டா எலைட்' },
     rate: 24,
+    rate2: 23,
     tag: { en: 'Luxury MPV', ta: 'சொகுசு எம்பிவி' },
     seats: '7+1',
     bags: '6 Bags',

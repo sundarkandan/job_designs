@@ -57,7 +57,7 @@ export default function TariffSection({ dark, t, lang }) { // Added 'lang' prop 
               <div className="p-5 space-y-4 relative z-10 flex-1 flex flex-col justify-between">
                 <div>
                   <span className="text-[9px] bg-amber-500/10 text-amber-500 font-extrabold px-2 py-0.5 rounded-md uppercase border border-amber-500/20">
-                    {item.tag[lang]} {/* Fixed: Access via lang key */}
+                    {item.tag[lang]}
                   </span>
                   <h3 className="heading-font text-2xl font-black uppercase tracking-wide mt-2">
                     {item.name[lang]} {/* Fixed: Access via lang key */}
@@ -77,6 +77,10 @@ export default function TariffSection({ dark, t, lang }) { // Added 'lang' prop 
                   <div className="flex items-baseline justify-between">
                     <span className="text-xs font-semibold text-zinc-500 uppercase">{t.oneWay}</span>
                     <span className="text-2xl font-black text-amber-500 heading-font">₹{item.rate}/km</span>
+                  </div>
+                   <div className="flex items-baseline justify-between">
+                    <span className="text-xs font-semibold text-zinc-500 uppercase">{t.roundTrip}</span>
+                    <span className="text-2xl font-black text-amber-500 heading-font">₹{item.rate2}/km</span>
                   </div>
                   <div className={`text-[9px] text-center mt-3 border-t pt-2 font-medium ${D ? 'text-zinc-500' : 'text-zinc-400'}`}>
                     {t.extraCharges}
