@@ -23,7 +23,7 @@ export default function ReviewsSection({ dark, t }) {
   const D = dark;
 
   return (
-    <section id="reviews" className={`padding py-20 border-t transition-colors duration-300 ${D ? 'border-zinc-900/40 bg-zinc-950/10' : 'border-zinc-200 bg-zinc-100/60'}`}>
+    <section id="reviews" style={{padding:"10%"}} className={`py-20 border-t transition-colors duration-300 ${D ? 'border-zinc-900/40 bg-zinc-950/10' : 'border-zinc-200 bg-zinc-100/60'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <GlassReveal>
           <div className="text-center space-y-2 mb-12">
