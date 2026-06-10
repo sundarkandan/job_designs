@@ -1,0 +1,13 @@
+# robots.txt — Trending Drop Taxi
+# https://trendingtaxi.in/robots.txt
+
+User-agent: *
+Allow: /
+
+# Block build artifacts
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /*.json$
+
+# Sitemap location
+Sitemap: https://trendingtaxi.in/sitemap.xml

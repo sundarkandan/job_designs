@@ -50,7 +50,19 @@ export default function HeroSection({
           shadow: '#facc15'
         };
       }
-
+const onSubmit = (e) => {
+  e.preventDefault();
+  
+  const vehicle = vehicles[selectedCar];
+  const distance = calculateDistance(formData.pickupAddress, formData.dropAddress);
+  
+  // Store only primitives (strings/numbers)
+  setResult({
+    price: `₹${vehicle.rate * distance}`,
+    vehicleName: vehicle.name.en,  // string ✓
+    rate: vehicle.rate,             // number ✓
+  });
+}
       // ── Dark Theme Rules ──
       const isMobile = window.innerWidth < 640;
       if (isMobile) {

@@ -1,8 +1,11 @@
 import { Car, MessageCircle } from 'lucide-react';
 import { vehicles, WHATSAPP_NUMBER } from '../constants/vehicles';
 
-export default function EstimateModal({ modal, selectedCar, formData, tripType, t, onClose }) {
+export default function EstimateModal({ modal, selectedCar, formData, tripType, t, onClose, lang = 'en' }) {
   const vehicle = vehicles[selectedCar];
+
+  // ✅ FIX: vehicle.name is an object {en: '...', ta: '...'} — extract string using lang
+  const vehicleName = typeof vehicle.name === 'object' ? (vehicle.name[lang] || vehicle.name.en) : vehicle.name;
 
   const triggerWhatsAppBooking = () => {
     let text =
@@ -18,7 +21,8 @@ export default function EstimateModal({ modal, selectedCar, formData, tripType, 
       text += `\nReturn Date/Time: ${formData.returnDate} at ${formData.returnTime}`;
     }
 
-    text += `\nCar Selected: ${vehicle.name}\nEstimated Fare: ₹${modal.price}`;
+    // ✅ FIX: Use vehicleName string instead of vehicle.name object
+    text += `\nCar Selected: ${vehicleName}\nEstimated Fare: ₹${modal.price}`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -38,8 +42,9 @@ export default function EstimateModal({ modal, selectedCar, formData, tripType, 
           <h3 className="heading-font text-2xl sm:text-3xl font-black uppercase text-amber-500 tracking-wide">
             {t.estTitle}
           </h3>
+          {/* ✅ FIX: Render vehicleName string, not vehicle.name object */}
           <p className="text-[11px] text-zinc-400 uppercase tracking-widest font-semibold">
-            {vehicle.name}
+            {vehicleName}
           </p>
         </div>
 

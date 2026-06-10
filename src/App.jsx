@@ -3,6 +3,8 @@ import { Car } from 'lucide-react';
 
 import { translations } from './constants/translations';
 import { vehicles } from './constants/vehicles';
+// App.jsx-ல top-ல import
+import useSEO from './hooks/useSEO';
 
 import Navbar from './components/Navbar';
 
@@ -47,6 +49,8 @@ export default function App() {
     date: '', time: '', returnDate: '', returnTime: '',
   });
 
+// App() function-ல add
+useSEO(lang); // lang change ஆனா meta auto-update ஆகும்
   /* ── Estimate modal state ── */
   const [estimateModal, setEstimateModal] = useState({ isOpen: false, price: 0, distance: 0 });
 
