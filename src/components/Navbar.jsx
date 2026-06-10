@@ -32,14 +32,14 @@ const [isContactVisible, setIsContactVisible] = useState(false);
     const contactSection = document.getElementById('contact');
     if (!contactSection) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // Hide if the contact section is in view
-        setIsContactVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 } // Adjust this if you want it to hide sooner/later
-    );
-
+   const observer = new IntersectionObserver(
+  ([entry]) => {
+    if (entry.isIntersecting && !isScrollingRef.current) {
+      setActiveSection(key);
+    }
+  },
+  { threshold: 0.1, rootMargin: "-5% 0px -5% 0px" } // ← 0.2 → 0.1
+);
     observer.observe(contactSection);
     return () => observer.unobserve(contactSection);
   }, []);
@@ -105,12 +105,20 @@ const [isContactVisible, setIsContactVisible] = useState(false);
     }
   }, [activeSection, lang]);
 
-  const handleScroll = (id) => {
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: 'smooth' });
-    setIsMobileMenuOpen(false);
-  };
-
+const handleScroll = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    isScrollingRef.current = true;
+    setActiveSection(id); // ← Force active immediately on click
+    element.scrollIntoView({ behavior: 'smooth' });
+    
+    // Reset after scroll animation completes
+    setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 1000);
+  }
+  setIsMobileMenuOpen(false);
+};
   const onDragStart = (e) => {
   const clientY = e.touches ? e.touches[0].clientY : e.clientY;
   dragStartY.current = clientY;
