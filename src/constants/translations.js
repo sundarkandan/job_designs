@@ -213,17 +213,17 @@ export const translations = {
     reviewsData: [
       {
         name: 'Dr. Anand Gopalan',
-        route: 'Chennai ⭢ Madurai',
+        route: 'Chennai to Madurai',
         text: 'Excellent outstation cab experience. The car was immaculate and the driver had superb knowledge of the highway route. No hidden charges — exactly as quoted.',
       },
       {
         name: 'Meera Krishnan',
-        route: 'Coimbatore ⭢ Bangalore',
+        route: 'Coimbatore to Bangalore',
         text: 'The one-way fare saved me nearly 40% compared to other outstation services. Transparent billing, no return fare — highly recommended for regular travelers.',
       },
       {
         name: 'S. Ranganathan',
-        route: 'Tirunelveli ⭢ Chennai',
+        route: 'Tirunelveli to Chennai',
         text: 'Professional outstation taxi service. The online estimate matched the final invoice to the rupee. Will book again for all my Tamil Nadu trips.',
       },
     ],
@@ -280,7 +280,7 @@ export const translations = {
     passengers: 'பயணிகள்',
     luggage: 'சூட்கேஸ்',
     extraCharges: 'ஓட்டுநர் பட்டா & டோல்கேட் தனியானது',
-    
+
     // ── Features ─────────────────────────────────────────────────
     whyChooseUs: 'ட்ரெண்டிங் டிராப் டாக்ஸியை ஏன் தேர்வு செய்ய வேண்டும்',
     servicesTitle: 'பிரீமியம் கேப் வசதிகள்',
@@ -336,17 +336,17 @@ export const translations = {
     reviewsData: [
       {
         name: 'டாக்டர். ஆனந்த் கோபாலன்',
-        route: 'சென்னை ⭢ மதுரை',
+        route: 'சென்னை to மதுரை',
         text: 'சிறந்த அவுட்ஸ்டேஷன் கேப் அனுபவம். கார் மிகவும் சுத்தமாக இருந்தது, ஓட்டுநருக்கு தேசியநெடுஞ்சாலை வழித்தட அறிவு மிகச் சிறப்பு. மறைமுக கட்டணங்கள் இல்லை.',
       },
       {
         name: 'மீரா கிருஷ்ணன்',
-        route: 'கோயம்புத்தூர் ⭢ பெங்களூரு',
+        route: 'கோயம்புத்தூர் to பெங்களூரு',
         text: 'ஒரு வழி கட்டணம் மற்ற சேவைகளை விட 40% குறைவு. வெளிப்படையான கட்டண முறை, திரும்பும் கட்டணம் இல்லை — தொடர்ந்து பயணிப்பவர்களுக்கு மிகவும் பரிந்துரைக்கிறேன்.',
       },
       {
         name: 'எஸ். ரங்கநாதன்',
-        route: 'திருநெல்வேலி ⭢ சென்னை',
+        route: 'திருநெல்வேலி to சென்னை',
         text: 'தொழில்முறை அவுட்ஸ்டேஷன் டாக்ஸி சேவை. ஆன்லைன் மதிப்பீடும் இறுதி கட்டணமும் சரியாக ஒத்திருந்தது. தமிழ்நாடு பயணங்களுக்கு மீண்டும் முன்பதிவு செய்வேன்.',
       },
     ],
