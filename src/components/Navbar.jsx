@@ -271,19 +271,22 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
           </div>
         </div>
 {/* ── MOBILE RIBBON NAV (draggable vertically) ─────────────── */}
-      <div
-        ref={ribbonRef}
-        className="lg:hidden fixed right-0 z-[9999]"
-        style={{ top: `${ribbonY}%`, transform: 'translateY(-50%)' }}
-      >
+   <div
+  ref={ribbonRef}
+  className="lg:hidden sets fixed right-0 z-[9999] w-fit"
+  style={{
+    top: `${ribbonY}%`,
+    transform: 'translateY(-50%)'
+  }}
+>
         <motion.div
           initial={false}
           animate={{ x: navOpen ? 0 : "70%" }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="flex items-center"
+          className="flex  items-center"
         >
           {/* Handle */}
-          <div className="flex flex-col w-8 rounded-l-2xl overflow-hidden shadow-lg">
+          <div className="flex  flex-col w-8 rounded-l-2xl overflow-hidden shadow-lg">
             {/* Drag grip */}
             <div
               onMouseDown={onDragStart}

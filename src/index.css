@@ -98,3 +98,7 @@ body {
   padding: 4px 8px;
   font-size: 12px;
 }
+.sets{
+  /* background-color: red; */
+pointer-events: none;
+}
