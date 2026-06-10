@@ -353,7 +353,7 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
         rel="noreferrer"
         className="p-4 rounded-full bg-emerald-500 text-white shadow-2xl hover:bg-emerald-400 transition-transform hover:scale-105"
       >
-        <MessageCircle className="h-6 w-6" strokeWidth={2.5} />
+      <IoLogoWhatsapp className="h-6 w-6" />
       </motion.a>
 
       {/* Phone - Increased padding and icon size */}
