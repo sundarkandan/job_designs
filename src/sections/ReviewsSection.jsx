@@ -55,9 +55,9 @@ export default function ReviewsSection({ dark, t }) {
   id="reviews"
   className={`border-t transition-colors duration-300 
     /* Mobile: 60% top, 80% bottom */
-    pt-[50%] pb-[10%] 
+    pt-[50%] 
     /* Desktop (md and up): 15% bottom, reset top to default/fixed value */
-    md:pt-20 md:pb-[15%]
+    md:pt-20 
     ${D ? 'border-zinc-900/40 bg-zinc-950/10' : 'border-zinc-200 bg-zinc-100/60'}
   `}
 >
