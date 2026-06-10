@@ -1,4 +1,4 @@
-import { Star } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import GlassReveal from '../components/GlassReveal';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
@@ -7,40 +7,55 @@ export default function ReviewsSection({ dark, t }) {
   const D = dark;
   const reviews = t.reviewsData;
   const [current, setCurrent] = useState(0);
-  const directionRef = useRef(1);
+  const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
   const autoPlayRef = useRef(null);
 
-  useEffect(() => {
+  // ── Auto-play: advance every 3.5s ──────────────────────────────
+  const startAutoPlay = () => {
+    clearInterval(autoPlayRef.current);
     autoPlayRef.current = setInterval(() => {
-      directionRef.current = 1;
+      setDirection(1);
       setCurrent(i => (i === reviews.length - 1 ? 0 : i + 1));
     }, 3500);
+  };
+
+  useEffect(() => {
+    startAutoPlay();
     return () => clearInterval(autoPlayRef.current);
   }, [reviews.length]);
 
-  const goDot = (i) => {
-    directionRef.current = i > current ? 1 : -1;
-    setCurrent(i);
-    // reset timer
-    clearInterval(autoPlayRef.current);
-    autoPlayRef.current = setInterval(() => {
-      directionRef.current = 1;
-      setCurrent(prev => (prev === reviews.length - 1 ? 0 : prev + 1));
-    }, 3500);
+  // ── Manual controls — reset auto-play timer on tap ─────────────
+  const goNext = () => {
+    setDirection(1);
+    setCurrent(i => (i === reviews.length - 1 ? 0 : i + 1));
+    startAutoPlay();
   };
 
+  const goPrev = () => {
+    setDirection(-1);
+    setCurrent(i => (i === 0 ? reviews.length - 1 : i - 1));
+    startAutoPlay();
+  };
+
+  const goDot = (i) => {
+    setDirection(i > current ? 1 : -1);
+    setCurrent(i);
+    startAutoPlay();
+  };
+
+  // ── Slide variants ─────────────────────────────────────────────
   const variants = {
-    enter:  () => ({ opacity: 0, x: directionRef.current > 0 ? 80 : -80 }),
-    center: () => ({ opacity: 1, x: 0 }),
-    exit:   () => ({ opacity: 0, x: directionRef.current > 0 ? -80 : 80 }),
+    enter: (dir) => ({ opacity: 0, x: dir > 0 ? 80 : -80 }),
+    center: { opacity: 1, x: 0 },
+    exit: (dir) => ({ opacity: 0, x: dir > 0 ? -80 : 80 }),
   };
 
   return (
-    <section
+ <section
   id="reviews"
   className={`border-t transition-colors duration-300 
     /* Mobile: 60% top, 80% bottom */
-    pt-[60%] pb-[80%] 
+    pt-[50%] pb-[10%] 
     /* Desktop (md and up): 15% bottom, reset top to default/fixed value */
     md:pt-20 md:pb-[15%]
     ${D ? 'border-zinc-900/40 bg-zinc-950/10' : 'border-zinc-200 bg-zinc-100/60'}
@@ -78,13 +93,15 @@ export default function ReviewsSection({ dark, t }) {
           ))}
         </div>
 
-        {/* ── MOBILE: Auto Carousel (no buttons) ── */}
+        {/* ── MOBILE: Carousel ── */}
         <div className="sm:hidden select-none">
 
+          {/* Fixed-height card container — prevents layout jump */}
           <div className="relative overflow-hidden" style={{ minHeight: '220px' }}>
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={current}
+                custom={direction}
                 variants={variants}
                 initial="enter"
                 animate="center"
@@ -97,7 +114,7 @@ export default function ReviewsSection({ dark, t }) {
             </AnimatePresence>
           </div>
 
-          {/* Progress bar */}
+          {/* Auto-play progress bar */}
           <div className={`mt-4 h-[2px] rounded-full overflow-hidden ${D ? 'bg-zinc-800' : 'bg-zinc-200'}`}>
             <motion.div
               key={current}
@@ -108,23 +125,39 @@ export default function ReviewsSection({ dark, t }) {
             />
           </div>
 
-          {/* Dots only — no buttons */}
-          <div className="flex items-center justify-center gap-2 mt-4">
-            {reviews.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goDot(i)}
-                className={`rounded-full transition-all duration-300 ${
-                  i === current
-                    ? 'w-6 h-2 bg-amber-500'
-                    : D
-                      ? 'w-2 h-2 bg-zinc-700'
-                      : 'w-2 h-2 bg-zinc-300'
-                }`}
-              />
-            ))}
-          </div>
+         
+           {/* Controls row */}
+          <div className="flex items-center justify-center mt-4 px-1">
 
+        
+
+            {/* Dots */}
+            <div className="flex items-center gap-2">
+              {reviews.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goDot(i)}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === current
+                      ? 'w-6 h-2 bg-amber-500'
+                      : D
+                        ? 'w-2 h-2 bg-zinc-700 hover:bg-zinc-500'
+                        : 'w-2 h-2 bg-zinc-300 hover:bg-zinc-400'
+                  }`}
+                />
+              ))}
+            </div>
+
+           
+          </div>
+         
+
+          {/* Counter */}
+          <p className={`text-center text-[10px] font-bold uppercase tracking-widest mt-3 ${
+            D ? 'text-zinc-600' : 'text-zinc-400'
+          }`}>
+            {current + 1} / {reviews.length}
+          </p>
         </div>
 
       </div>
@@ -132,9 +165,10 @@ export default function ReviewsSection({ dark, t }) {
   );
 }
 
+/* ── Shared Review Card ── */
 function ReviewCard({ rev, dark: D }) {
   return (
-    <div className={`liquid-hover glass-panel p-6 rounded-2xl space-y-4 flex flex-col justify-between shadow-lg border ${
+    <div className={` glass-panel p-6 rounded-2xl space-y-4 flex flex-col justify-between shadow-lg border ${
       D ? 'bg-zinc-900/50 border-zinc-800' : 'bg-white/50 border-zinc-200'
     }`}>
       <div className="space-y-2">

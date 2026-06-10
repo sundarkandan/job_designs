@@ -278,7 +278,7 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
 
       {/* ── ✅ FIXED: Floating buttons — hide when contact visible OR nav open ── */}
       <AnimatePresence>
-        {!navOpen && !isContactVisible && (
+        {!navOpen && (
           <motion.div
             key="floating-buttons"
             initial={{ opacity: 0, scale: 0.7, y: 20 }}
