@@ -99,10 +99,10 @@ body {
   font-size: 12px;
 }
 .sets{
-  background-color: red;
+
 pointer-events: none;
 }
 .sets *{
-  background-color: red;
-pointer-events: none;
+
+pointer-events: auto;
 }
