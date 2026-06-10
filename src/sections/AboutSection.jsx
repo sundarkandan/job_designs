@@ -21,7 +21,8 @@ export default function AboutSection({ dark, t }) {
 
         {/* ── Left: Copy + Feature List ── */}
         <div className="lg:col-span-5 space-y-5">
-          <GlassReveal>
+         <center>
+           <GlassReveal>
             <span className="text-xs text-amber-500 font-bold uppercase tracking-widest">
               {t.whyChooseUs}
             </span>
@@ -33,6 +34,7 @@ export default function AboutSection({ dark, t }) {
             </p>
           </GlassReveal>
 
+         </center>
           <div className="space-y-4">
             {FEATURES.map((feat, idx) => (
               <GlassReveal key={idx} delay={idx * 100}>
