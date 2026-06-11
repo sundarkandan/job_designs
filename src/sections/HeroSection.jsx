@@ -267,8 +267,8 @@ const onSubmit = (e) => {
               style={{ animationDelay: '200ms' }}
               className="pro-animate-fade heading-font text-4xl sm:text-5xl xl:text-6xl font-black uppercase leading-[0.95] tracking-tight text-current"
             >
-              {t.mainTitle} <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-500">
+              {t.mainTitle+" "} 
+               <span className="yellow bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-500">
                 {tripType === 'oneway' ? '@ ₹16/km' : 'Best Rates'}
               </span>
             </h1>

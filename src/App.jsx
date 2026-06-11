@@ -40,7 +40,7 @@ export default function App() {
   /* ── App-level state ── */
   const [appLoading, setAppLoading] = useState(true);
   const [langChanging, setLangChanging] = useState(false);
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
   const [lang, setLang] = useState('en');
 
   /* ── Booking form state ── */
@@ -257,6 +257,7 @@ useSEO(lang); // lang change ஆனா meta auto-update ஆகும்
         modal={estimateModal}
         selectedCar={selectedCar}
         formData={formData}
+        dark={dark}
         tripType={tripType}
         t={t}
         onClose={() => setEstimateModal(prev => ({ ...prev, isOpen: false }))}

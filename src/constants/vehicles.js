@@ -10,6 +10,10 @@ import vellore from "../assets/vellore.jpg"
 
 import Dizer from "./dizire.png"
 import eitos from "./eitos.png"
+import nissan from "./nissan sunny.png"
+import aura from "./aura.png"
+import ciaz from "./ciaz.png"
+import amaze from "./amaze.png"
 
 import ertiga from "./ertiga.png"
 import kia from "./kia.png"
@@ -69,7 +73,51 @@ export const vehicles = {
         te: "ఎటియోస్"
       },
       img: eitos
-    }
+    },{
+    carname: {
+      en: "Amaze",
+      ta: "அமேஸ்",
+      hi: "अमेज़",
+      kn: "ಅಮೇಜ್",
+      ml: "അമേസ്",
+      te: "అమేజ్"
+    },
+    img: amaze
+  },
+  {
+    carname: {
+      en: "Aura",
+      ta: "ஆரா",
+      hi: "ऑरा",
+      kn: "ಆರಾ",
+      ml: "ഓറ",
+      te: "ఆరా"
+    },
+    img: aura
+  },
+  {
+    carname: {
+      en: "Ciaz",
+      ta: "ஸியாஸ்",
+      hi: "सियाज़",
+      kn: "ಸಿಯಾಜ್",
+      ml: "സിയാസ്",
+      te: "సియాజ్"
+    },
+    img: ciaz
+  },
+  {
+    carname: {
+      en: "Sunny",
+      ta: "சன்னி",
+      hi: "सनी",
+      kn: "ಸನ್ನಿ",
+      ml: "സണ്ണി",
+      te: "సన్నీ"
+    },
+    img: nissan
+  }
+    
   ],
 
   instructions: [
