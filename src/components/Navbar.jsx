@@ -340,7 +340,7 @@ export default function Navbar({ dark, setDark, lang, onLangChange, t, onScroll 
       ════════════════════════════════════════════════════════ */}
       <div
         ref={ribbonRef}
-        className="lg:hidden fixed right-0 z-[9999] w-fit"
+        className="lg:hidden sets fixed right-0 z-[9999] w-fit"
         style={{ top: `${ribbonY}%`, transform: 'translateY(-50%)' }}
       >
         <motion.div
