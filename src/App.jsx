@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Car } from 'lucide-react';
 
 import { translations } from './constants/translations';
@@ -26,6 +26,35 @@ if (typeof document !== 'undefined') {
   document.head.appendChild(link);
 }
 
+/* ── Load Google Maps script once ── */
+const MAPS_API_KEY = 'AIzaSyAUThUmfMul1TMOGnfdg9gCfCGR8eIi0B8';
+
+function loadGoogleMapsScript() {
+  return new Promise((resolve, reject) => {
+    if (window.google && window.google.maps) {
+      resolve(window.google.maps);
+      return;
+    }
+    // Check if script tag already exists (avoid duplicates)
+    if (document.querySelector(`script[src*="maps.googleapis.com"]`)) {
+      const poll = setInterval(() => {
+        if (window.google && window.google.maps) {
+          clearInterval(poll);
+          resolve(window.google.maps);
+        }
+      }, 100);
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&libraries=places`;
+    script.async = true;
+    script.defer = true;
+    script.onload = () => resolve(window.google.maps);
+    script.onerror = () => reject(new Error('Google Maps failed to load'));
+    document.head.appendChild(script);
+  });
+}
+
 const PRELOAD_IMAGES = [
   'https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&q=80&w=600',
   'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=600',
@@ -39,12 +68,6 @@ export default function App() {
   const [langChanging, setLangChanging] = useState(false);
   const [lang, setLang] = useState('en');
 
-  /*
-    FIX: Initialize dark from localStorage so the loader (and whole app)
-    immediately reflects the user's saved preference instead of always
-    starting as false (light).
-    Falls back to false if nothing is saved yet.
-  */
   const [dark, setDark] = useState(() => {
     try {
       return localStorage.getItem('theme') === 'dark';
@@ -53,13 +76,11 @@ export default function App() {
     }
   });
 
-  /* ── Persist dark preference whenever it changes ── */
+  /* ── Persist dark preference ── */
   useEffect(() => {
     try {
       localStorage.setItem('theme', dark ? 'dark' : 'light');
-    } catch {
-      // localStorage unavailable — silently ignore
-    }
+    } catch {}
   }, [dark]);
 
   /* ── Booking form state ── */
@@ -73,23 +94,32 @@ export default function App() {
   useSEO(lang);
 
   /* ── Estimate modal state ── */
-  const [estimateModal, setEstimateModal] = useState({ isOpen: false, price: 0, distance: 0 });
+  const [estimateModal, setEstimateModal] = useState({
+    isOpen: false,
+    price: 0,
+    distance: 0,
+    distanceText: '',
+    durationText: '',
+    isLoading: false,
+    error: null,
+  });
 
   const t = translations[lang];
 
-  /* ── Preload images ── */
+  /* ── Preload images + Maps script together ── */
   useEffect(() => {
     let mounted = true;
-    Promise.all(
-      PRELOAD_IMAGES.map(src =>
+    Promise.all([
+      ...PRELOAD_IMAGES.map(src =>
         new Promise(resolve => {
           const img = new Image();
           img.src = src;
           img.onload = resolve;
           img.onerror = resolve;
         })
-      )
-    ).then(() => {
+      ),
+      loadGoogleMapsScript().catch(() => null), // don't block on maps failure
+    ]).then(() => {
       if (mounted) setTimeout(() => setAppLoading(false), 1200);
     });
     return () => { mounted = false; };
@@ -114,22 +144,81 @@ export default function App() {
   const handleInputChange = (e) =>
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleEstimate = (e) => {
+  /* ── Real distance via Google Maps Distance Matrix ── */
+  const getDistanceFromMaps = useCallback((origin, destination) => {
+    return new Promise((resolve, reject) => {
+      if (!window.google || !window.google.maps) {
+        reject(new Error('Google Maps not loaded'));
+        return;
+      }
+      const service = new window.google.maps.DistanceMatrixService();
+      service.getDistanceMatrix(
+        {
+          origins: [origin],
+          destinations: [destination],
+          travelMode: window.google.maps.TravelMode.DRIVING,
+          unitSystem: window.google.maps.UnitSystem.METRIC,
+          avoidHighways: false,
+          avoidTolls: false,
+        },
+        (response, status) => {
+          if (status !== 'OK') {
+            reject(new Error(`Distance Matrix error: ${status}`));
+            return;
+          }
+          const element = response.rows[0]?.elements[0];
+          if (!element || element.status !== 'OK') {
+            reject(new Error(`Route not found: ${element?.status || 'UNKNOWN'}`));
+            return;
+          }
+          resolve({
+            distanceMeters: element.distance.value,          // metres
+            distanceKm: Math.ceil(element.distance.value / 1000), // rounded up km
+            distanceText: element.distance.text,              // "142 km"
+            durationText: element.duration.text,              // "2 hours 14 mins"
+          });
+        }
+      );
+    });
+  }, []);
+
+  /* ── Handle estimate submit ── */
+  const handleEstimate = async (e) => {
     e.preventDefault();
-    const factor = (formData.pickupAddress.length || 5) + (formData.dropAddress.length || 7);
-    const distance = Math.floor((factor * 6.8) % 320) + 60;
-    const baseRate = vehicles[selectedCar].rate;
-    const price = Math.round(distance * baseRate * (tripType === 'roundtrip' ? 1.8 : 1));
-    setEstimateModal({ isOpen: true, price, distance });
+
+    // Show loading state immediately
+    setEstimateModal({ isOpen: true, price: 0, distance: 0, distanceText: '', durationText: '', isLoading: true, error: null });
+
+    try {
+      const { distanceKm, distanceText, durationText } = await getDistanceFromMaps(
+        formData.pickupAddress,
+        formData.dropAddress
+      );
+
+      const baseRate = vehicles[selectedCar].rate;
+      const price = Math.round(distanceKm * baseRate * (tripType === 'roundtrip' ? 2 : 1));
+
+      setEstimateModal({
+        isOpen: true,
+        price,
+        distance: distanceKm,
+        distanceText,
+        durationText,
+        isLoading: false,
+        error: null,
+      });
+    } catch (err) {
+      console.error('Distance calculation failed:', err);
+      setEstimateModal(prev => ({
+        ...prev,
+        isLoading: false,
+        error: err.message || 'Could not calculate distance. Please check addresses.',
+      }));
+    }
   };
 
   /* ── Loading screen ── */
   if (appLoading) {
-    /*
-      Use the already-initialized `dark` state here — since it's read from
-      localStorage synchronously, the loader renders with the correct theme
-      on the very first paint.
-    */
     const loaderBg      = dark ? '#09090b' : '#fcfbf7';
     const loaderText    = '#f59e0b';
     const loaderSub     = dark ? '#52525b' : '#a1a1aa';
@@ -285,6 +374,7 @@ export default function App() {
         dark={dark}
         tripType={tripType}
         t={t}
+        lang={lang}
         onClose={() => setEstimateModal(prev => ({ ...prev, isOpen: false }))}
       />
     </div>
