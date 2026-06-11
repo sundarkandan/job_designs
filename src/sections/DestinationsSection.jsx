@@ -3,21 +3,44 @@ import GlassReveal from '../components/GlassReveal';
 import { popularDestinations, vehicles } from '../constants/vehicles';
 
 const vehicleRows = [
-  { key: 'sedan',  label: 'SEDAN'  },
-  { key: 'suv',    label: 'SUV'    },
-  { key: 'innova', label: 'INNOVA' },
-  { key: 'crysta', label: 'CRYSTA' },
+  { key: 'sedan',  label: { en: 'SEDAN',  ta: 'செடான்', hi: 'सेडान', kn: 'ಸೆಡಾನ್',  ml: 'സെഡാൻ',   te: 'సెడాన్'  } },
+  { key: 'suv',    label: { en: 'SUV',    ta: 'எஸ்யூவி', hi: 'एसयूवी', kn: 'ಎಸ್‌ಯುವಿ', ml: 'എസ്‌യുവി', te: 'ఎస్‌యూవీ' } },
+  { key: 'innova', label: { en: 'INNOVA', ta: 'இன்னோவா', hi: 'इनोवा', kn: 'ಇನ್ನೋವಾ', ml: 'ഇന്നോവ',   te: 'ఇన్నోవా'  } },
+  { key: 'crysta', label: { en: 'CRYSTA', ta: 'கிறிஸ்டா', hi: 'क्रिस्टा', kn: 'ಕ್ರಿಸ್ಟಾ', ml: 'ക്രിസ്റ്റ', te: 'క్రిస్టా' } },
 ];
 
-const includedItems = [
-  'Driver Bata Rs.400',
-  'Hillstation Charges Rs.300',
-  'Other State Permit Charges',
-  'Toll & Parking Charges',
-];
+const includedItems = {
+  en: ['Driver Bata', 'Hillstation Charges', 'Other State Permit Charges', 'Toll & Parking Charges'],
+  ta: ['டிரைவர் பத்தா', 'மலைவாசஸ்தல கட்டணம்', 'மாநில அனுமதி கட்டணம்', 'டோல் & பார்க்கிங் கட்டணம்'],
+  hi: ['ड्राइवर भत्ता', 'हिल स्टेशन शुल्क', 'अन्य राज्य परमिट शुल्क', 'टोल और पार्किंग शुल्क'],
+  kn: ['ಚಾಲಕ ಭತ್ತ', 'ಹಿಲ್ ಸ್ಟೇಷನ್ ಶುಲ್ಕ', 'ಇತರ ರಾಜ್ಯ ಪರವಾನಗಿ ಶುಲ್ಕ', 'ಟೋಲ್ ಮತ್ತು ಪಾರ್ಕಿಂಗ್ ಶುಲ್ಕ'],
+  ml: ['ഡ്രൈവർ ബത്ത', 'ഹിൽ സ്റ്റേഷൻ ചാർജ്', 'മറ്റ് സ്റ്റേറ്റ് പെർമിറ്റ് ചാർജ്', 'ടോൾ & പാർക്കിംഗ് ചാർജ്'],
+  te: ['డ్రైవర్ బత్తా', 'హిల్ స్టేషన్ ఛార్జీలు', 'ఇతర రాష్ట్ర అనుమతి ఛార్జీలు', 'టోల్ & పార్కింగ్ ఛార్జీలు'],
+};
+
+const includedWithLabel = {
+  en: 'Included With',
+  ta: 'சேர்க்கப்பட்டவை',
+  hi: 'शामिल है',
+  kn: 'ಒಳಗೊಂಡಿದೆ',
+  ml: 'ഉൾപ്പെടുന്നവ',
+  te: 'చేర్చబడినవి',
+};
+
+const colHeaders = {
+  en: { vehicle: 'Vehicle', oneWay: 'One Way', roundTrip: 'Round Trip' },
+  ta: { vehicle: 'வாகனம்', oneWay: 'ஒருவழி', roundTrip: 'இருவழி' },
+  hi: { vehicle: 'वाहन', oneWay: 'एकतरफा', roundTrip: 'राउंड ट्रिप' },
+  kn: { vehicle: 'ವಾಹನ', oneWay: 'ಒನ್-ವೇ', roundTrip: 'ರೌಂಡ್ ಟ್ರಿಪ್' },
+  ml: { vehicle: 'വാഹനം', oneWay: 'ഒറ്റ വഴി', roundTrip: 'റൗണ്ട് ട്രിപ്പ്' },
+  te: { vehicle: 'వాహనం', oneWay: 'వన్‌వే', roundTrip: 'రౌండ్ ట్రిప్' },
+};
 
 function AnimatedBentoCard({ dest, idx, lang, dark }) {
-  const title = typeof dest.title === 'object' ? dest.title[lang] : dest.title;
+  const title = typeof dest.title === 'object' ? (dest.title[lang] || dest.title.en) : dest.title;
+  const items = includedItems[lang] || includedItems.en;
+  const withLabel = includedWithLabel[lang] || includedWithLabel.en;
+  const headers = colHeaders[lang] || colHeaders.en;
 
   return (
     <div
@@ -25,7 +48,8 @@ function AnimatedBentoCard({ dest, idx, lang, dark }) {
         idx === 0 || idx === 4 ? 'md:row-span-2' : 'md:row-span-1'
       }`}
     >
-      <div className="relative group w-full h-full cursor-pointer shadow-2xl"
+      <div
+        className="relative group w-full h-full cursor-pointer shadow-2xl"
         style={{ border: dark ? '1px solid rgba(255,255,255,0.1)' : '1px solid rgba(0,0,0,0.1)' }}
       >
         {/* Background image */}
@@ -66,14 +90,15 @@ function AnimatedBentoCard({ dest, idx, lang, dark }) {
                 color: dark ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.45)',
               }}
             >
-              <span>Vehicle</span>
-              <span className="text-center">One Way</span>
-              <span className="text-right">Round Trip</span>
+              <span>{headers.vehicle}</span>
+              <span className="text-center">{headers.oneWay}</span>
+              <span className="text-right">{headers.roundTrip}</span>
             </div>
 
             {vehicleRows.map(({ key, label }, i) => {
               const v = vehicles[key];
               if (!v) return null;
+              const labelText = typeof label === 'object' ? (label[lang] || label.en) : label;
               return (
                 <div
                   key={key}
@@ -88,7 +113,7 @@ function AnimatedBentoCard({ dest, idx, lang, dark }) {
                     className="text-[11px] font-semibold uppercase tracking-wide"
                     style={{ color: dark ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.75)' }}
                   >
-                    {label}
+                    {labelText}
                   </span>
                   <span
                     className="text-center text-[13px] font-black"
@@ -108,18 +133,15 @@ function AnimatedBentoCard({ dest, idx, lang, dark }) {
           </div>
 
           {/* Included section */}
-          <div
-            className="mt-3 pt-3"
-            style={{ borderTop: '1px solid rgba(245,158,11,0.3)' }}
-          >
+          <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(245,158,11,0.3)' }}>
             <p
               className="text-[9px] font-black uppercase tracking-[0.2em] mb-2"
               style={{ color: dark ? '#f59e0b' : '#b45309' }}
             >
-              Included With
+              {withLabel}
             </p>
             <ul className="space-y-[3px]">
-              {includedItems.map((item) => (
+              {items.map((item) => (
                 <li key={item} className="flex items-start gap-1.5">
                   <span
                     className="mt-[3px] w-1 h-1 rounded-full flex-shrink-0"

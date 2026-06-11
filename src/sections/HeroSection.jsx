@@ -7,7 +7,13 @@ import {
 import GlassReveal from '../components/GlassReveal';
 import { vehicles } from '../constants/vehicles';
 import usePlacesAutocomplete from '../hooks/usePlacesAutocomplete';
-
+// generateBookingId() → "FF6NY001" format
+export function generateBookingId() {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const nums = '0123456789';
+  const rand = (arr, n) => Array.from({length: n}, () => arr[Math.floor(Math.random() * arr.length)]).join('');
+  return rand(letters, 2) + rand(letters + nums, 3) + rand(nums, 3);
+}
 export default function HeroSection({
   dark, t, tripType, setTripType,
   selectedCar, setSelectedCar,
@@ -378,7 +384,7 @@ export default function HeroSection({
                     ref={pickupRef}
                     type="text" name="pickupAddress" required
                     value={formData.pickupAddress} onChange={onInputChange}
-                    placeholder="e.g. Ambasamudram"
+                   
                     className="bg-transparent w-full text-xs focus:outline-none font-medium text-current"
                   />
                 </Field>
@@ -390,7 +396,7 @@ export default function HeroSection({
                     ref={dropRef}
                     type="text" name="dropAddress" required
                     value={formData.dropAddress} onChange={onInputChange}
-                    placeholder="e.g. Chennai"
+                    
                     className="bg-transparent w-full text-xs focus:outline-none font-medium text-current"
                   />
                 </Field>
@@ -436,41 +442,45 @@ export default function HeroSection({
                 )}
               </div>
 
-              {/* Car Selection */}
-              <div style={{ animationDelay: '740ms' }} className="pro-animate-scale space-y-1">
-                <label className="text-[9px] font-bold uppercase tracking-widest text-zinc-500">
-                  {t.selectCar}
-                </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {Object.entries(vehicles).map(([key, value], index) => (
-                    <button
-                      key={key}
-                      type="button"
-                      onClick={() => setSelectedCar(key)}
-                      style={{ animationDelay: `${800 + index * 60}ms` }}
-                      className={`pro-animate-scale p-1.5 rounded-xl text-center transition-all duration-200 flex flex-col items-center justify-between border hover:scale-[1.02] ${
-                        selectedCar === key
-                          ? 'border-amber-500 bg-amber-500/10'
-                          : D
-                            ? 'bg-zinc-900 border-zinc-800 hover:border-zinc-700'
-                            : 'bg-zinc-50 border-zinc-200 hover:border-zinc-300'
-                      }`}
-                    >
-                      <img
-                        src={value.slides[0].img}
-                        alt={value.name.en}
-                        className="h-7 sm:h-7 w-auto object-contain pointer-events-none mb-1"
-                      />
-                      <div>
-                        <div className="text-[9px] font-bold uppercase tracking-tight text-current">
-                          {value.name2.en.split(' ')[0] || value.name2.en}
-                        </div>
-                        <div className="text-[9px] text-amber-500 font-extrabold">₹{value.rate}/km</div>
-                      </div>
-                    </button>
-                  ))}
-                </div>
-              </div>
+ {/* Car Selection */}
+<div style={{ animationDelay: '740ms' }} className="pro-animate-scale space-y-1">
+  <label className="text-[9px] font-bold uppercase tracking-widest text-zinc-500">
+    {t.selectCar}
+  </label>
+  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+    {Object.entries(vehicles).map(([key, value], index) => (
+      <button
+        key={key}
+        type="button"
+        onClick={() => setSelectedCar(key)}
+        style={{ animationDelay: `${800 + index * 60}ms` }}
+        className={`pro-animate-scale p-1.5 rounded-xl text-center transition-all duration-200 flex flex-col items-center justify-between border hover:scale-[1.02] ${
+          selectedCar === key
+            ? 'border-amber-500 bg-amber-500/10'
+            : D
+              ? 'bg-zinc-900 border-zinc-800 hover:border-zinc-700'
+              : 'bg-zinc-50 border-zinc-200 hover:border-zinc-300'
+        }`}
+      >
+        <img
+          src={value.slides[0].img}
+          alt={value.name.en}
+          className="h-7 sm:h-7 w-auto object-contain pointer-events-none mb-1"
+        />
+        <div className="w-full">
+          <div className="text-[9px] font-bold uppercase tracking-tight text-current mb-1">
+            {value.name2.en.split(' ')[0] || value.name2.en}
+          </div>
+
+          <div className="text-[9px] text-amber-500 font-extrabold">
+            ₹{tripType === 'oneway' ? value.rate : value.rate2}/km
+          </div>
+
+        </div>
+      </button>
+    ))}
+  </div>
+</div>
 
               {/* Submit */}
               <div className="pt-1.5 relative z-30">

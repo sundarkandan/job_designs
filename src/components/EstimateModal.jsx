@@ -2,14 +2,69 @@ import { Car, Clock, MapPin, AlertCircle, Loader2, Gauge, RefreshCw, ArrowRight 
 import { vehicles, WHATSAPP_NUMBER } from '../constants/vehicles';
 import { IoLogoWhatsapp } from "react-icons/io";
 
+// ── Booking ID generator ──
+function generateBookingId() {
+  const L = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const N = '0123456789';
+  const r = (arr, n) => Array.from({ length: n }, () => arr[Math.floor(Math.random() * arr.length)]).join('');
+  
+  // timestamp-based suffix (last 3 digits of current ms) + 2 random letters + 3 random alphanum
+  const tsPart = String(Date.now()).slice(-3);          // e.g. "482"
+  const letPart = r(L, 2);                              // e.g. "FF"
+  const midPart = r(L + N, 3);                          // e.g. "6NY"
+  
+  return letPart + midPart + tsPart;                    // → "FF6NY482"
+}
+
 export default function EstimateModal({ modal, dark, selectedCar, formData, tripType, t, onClose, lang = 'en' }) {
   const vehicle = vehicles[selectedCar];
   const vehicleName = typeof vehicle.name === 'object' ? (vehicle.name[lang] || vehicle.name.en) : vehicle.name;
 
+  // active rate based on trip type
+  const activeRate = tripType === 'oneway' ? vehicle.rate : vehicle.rate2;
+
+  // minimum km policy
+  const MIN_KM = tripType === 'oneway' ? 130 : 250;
+  const appliedKm = Math.max(modal.distance, MIN_KM);
+  const driverBatta = 500;
+  const finalFare = Math.round(appliedKm * activeRate * (tripType === 'roundtrip' ? 2 : 1)) + driverBatta;
+
   const triggerWhatsAppBooking = () => {
-    let text = `*Booking Request via Website*\n\nType: ${tripType === 'oneway' ? 'One Way' : 'Round Trip'}\nName: ${formData.name}\nMobile: ${formData.mobile}\nPickup: ${formData.pickupAddress}\nDrop: ${formData.dropAddress}\nPickup Date/Time: ${formData.date} at ${formData.time}`;
-    if (tripType === 'roundtrip') text += `\nReturn Date/Time: ${formData.returnDate} at ${formData.returnTime}`;
-    text += `\nCar Selected: ${vehicleName}\nDistance: ${modal.distanceText || modal.distance + ' KM'}\nEstimated Duration: ${modal.durationText || 'N/A'}\nEstimated Fare: ₹${modal.price}`;
+    const bookingId = generateBookingId();
+    const timeStr = formData.time
+      ? new Date(`2000-01-01T${formData.time}`).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true })
+      : formData.time;
+
+    const text =
+`*Your Booking Details:*
+        Booking ID: ${bookingId}
+        Name: ${formData.name}
+        Mobile Number: ${formData.mobile}
+        Pickup Location: ${formData.pickupAddress}
+        Drop Location: ${formData.dropAddress}
+        Pickup Date: ${formData.date}
+        Pickup Time: ${timeStr}
+        Trip Type: ${tripType === 'oneway' ? 'one_way' : 'round_trip'}${tripType === 'roundtrip' ? `\n        Return Date: ${formData.returnDate}\n        Return Time: ${formData.returnTime}` : ''}
+        Car Selected: ${vehicleName}
+        Total KM: ${appliedKm} KM
+        Rate Per KM: ${activeRate} ₹
+        Driver Batta: ${driverBatta} ₹
+        Total Trip Fare: ${finalFare} ₹
+        Toll, parking, permit, Hills Charges extra
+
+        -----------------------------------------
+               *Accepted:*
+          Minimum KM Policy:
+	   _Oneway - 130 Km Minimum_
+	   _Roundtrip - 250 KM Minimum_
+
+        -----------------------------------------
+
+     *Thank you for choosing Trending Drop Taxi! Safe Travels!*
+
+     *For any questions please contact* *+91 80157 85116*
+     *www.trendingtaxi.in*`;
+
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
@@ -107,7 +162,7 @@ export default function EstimateModal({ modal, dark, selectedCar, formData, trip
                   <Gauge className="inline h-3 w-3 mr-1 -mt-0.5" />
                   {t.rate}
                 </span>
-                <span className={rowValueCls}>₹ {vehicle.rate} {t.perKm}</span>
+                <span className={rowValueCls}>₹ {activeRate} {t.perKm}</span>
               </div>
 
               {tripType === 'roundtrip' && (
@@ -136,10 +191,16 @@ export default function EstimateModal({ modal, dark, selectedCar, formData, trip
                 </div>
               )}
 
+              {/* Driver Batta row */}
+              <div className="flex justify-between items-center">
+                <span className={rowLabelCls}>🧑‍✈️ Driver Batta</span>
+                <span className={rowValueCls}>₹ {driverBatta}</span>
+              </div>
+
               <div className={`border-t my-2 pt-2 flex justify-between items-baseline ${dark ? 'border-zinc-800' : 'border-zinc-300'}`}>
                 <span className="text-xs font-bold uppercase text-amber-500">{t.totalEst}</span>
                 <span className={`text-2xl sm:text-3xl font-black heading-font ${dark ? 'text-white' : 'text-zinc-900'}`}>
-                  ₹{modal.price}/-
+                  ₹{finalFare}/-
                 </span>
               </div>
             </div>
