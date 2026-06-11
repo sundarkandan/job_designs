@@ -1,6 +1,8 @@
 import { Phone, MapPin, Clock, CheckCircle, MessageCircle } from 'lucide-react';
 import { WHATSAPP_NUMBER, PHONE_NUMBER } from '../constants/vehicles';
 import { motion } from 'framer-motion';
+import { IoLogoWhatsapp } from "react-icons/io";
+
 export default function ContactSection({ dark, t }) {
   const D = dark;
 
@@ -40,42 +42,47 @@ export default function ContactSection({ dark, t }) {
           </div>
         </div>
 
-  {/* ── Right: CTA Buttons ── */}
-<div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-3 w-full">
-  
-  {/* Call Button: Horizontal Shake Animation */}
-  <motion.a
-    href={`tel:${PHONE_NUMBER}`}
-    
-    className= "shake-animation flex-1 py-3.5 text-center rounded-xl font-black uppercase text-xs tracking-widest bg-amber-500 text-zinc-950 flex items-center justify-center gap-2 hover:bg-amber-400 transition-colors duration-300 shadow-lg"
-  >
-    <Phone className="h-4 w-4" /> {t.callNow}
-  </motion.a>
+        {/* ── Right: CTA Buttons ── */}
+        <div className="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-3 w-full">
 
-  {/* WhatsApp Button: Badge Pulse Animation */}
-  <motion.a
-    href={`https://wa.me/${WHATSAPP_NUMBER}`}
-    target="_blank"
-    rel="noreferrer"
-    animate={{ 
-      scale: [1, 1.03, 1],
-      boxShadow: [
-        "0 0 0 0 rgba(52, 211, 153, 0.4)",
-        "0 0 0 10px rgba(52, 211, 153, 0)",
-        "0 0 0 0 rgba(52, 211, 153, 0)"
-      ]
-    }}
-    transition={{ 
-      duration: 2, 
-      repeat: Infinity, 
-      ease: "easeInOut" 
-    }}
-    className="flex-1 py-3.5 text-center rounded-xl font-black uppercase text-xs tracking-widest bg-zinc-900 border border-zinc-800 text-emerald-400 flex items-center justify-center gap-2 hover:bg-zinc-800 transition-colors duration-300 shadow-lg"
-  >
-    <MessageCircle className="h-4 w-4" /> {t.whatsappDesk}
-  </motion.a>
-</div>
+          {/* Call Button */}
+          <motion.a
+            href={`tel:${PHONE_NUMBER}`}
+            className="shake-animation flex-1 py-3.5 text-center rounded-xl font-black uppercase text-xs tracking-widest bg-amber-500 text-zinc-950 flex items-center justify-center gap-2 hover:bg-amber-400 transition-colors duration-300 shadow-lg"
+          >
+            <Phone className="h-4 w-4" /> {t.callNow}
+          </motion.a>
 
+          {/* WhatsApp Button — always green bg, always white text */}
+          <motion.a
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            target="_blank"
+            rel="noreferrer"
+            animate={{
+              scale: [1, 1.03, 1],
+              boxShadow: [
+                "0 0 0 0 rgba(34, 197, 94, 0.4)",
+                "0 0 0 10px rgba(34, 197, 94, 0)",
+                "0 0 0 0 rgba(34, 197, 94, 0)"
+              ]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            style={{
+              backgroundColor: '#16a34a',   /* green-600 — same in both themes */
+              color: '#ffffff',
+            }}
+            className="flex-1 py-3.5 text-center rounded-xl font-black uppercase text-xs tracking-widest flex items-center justify-center gap-2 transition-colors duration-300 shadow-lg hover:brightness-110"
+          >
+           
+                <IoLogoWhatsapp className="h-6 w-6" style={{ color: '#ffffff' }} />
+            {t.whatsappDesk}
+          </motion.a>
+
+        </div>
       </div>
     </section>
   );
