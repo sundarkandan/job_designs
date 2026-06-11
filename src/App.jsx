@@ -27,7 +27,7 @@ if (typeof document !== 'undefined') {
 }
 
 /* ── Load Google Maps script once ── */
-const MAPS_API_KEY = 'AIzaSyAUThUmfMul1TMOGnfdg9gCfCGR8eIi0B8';
+const MAPS_API_KEY = import.meta.env.VITE_MAPS_API_KEY;
 
 function loadGoogleMapsScript() {
   return new Promise((resolve, reject) => {
