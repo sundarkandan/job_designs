@@ -17,9 +17,9 @@ const faqHeading = {
     <section id="faq" className={`py-24 px-6 ${dark ? 'bg-[#0a0a0a]' : 'bg-[#fcfbf7]'}`}>
       <div className="max-w-6xl mx-auto">
         <h2 className={`text-4xl font-black uppercase mb-16 text-center ${dark ? 'text-white' : 'text-zinc-900'}`}>
-        <h2>
+       
   {faqHeading[lang] || faqHeading.en}
-</h2>
+
         </h2>
 
         {/* Responsive Grid: 1 column on mobile, 2 columns on large screens */}

@@ -15,7 +15,7 @@ export default function HeroSection({
 }) {
   const D = dark;
   const canvasRef = useRef(null);
-console.log(t)
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
