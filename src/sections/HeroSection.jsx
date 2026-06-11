@@ -409,7 +409,7 @@ const onSubmit = (e) => {
                       <img src={value.slides[0].img} alt={value.name.en} className="h-7 sm:h-7 w-auto object-contain pointer-events-none mb-1" />
                       <div>
                         <div className="text-[9px] font-bold uppercase tracking-tight text-current">
-                          {value.name2.en.split(' ')[1] || value.name2.en}
+                          {value.name2.en.split(' ')[0] || value.name2.en}
                         </div>
                         <div className="text-[9px] text-amber-500 font-extrabold">₹{value.rate}/km</div>
                       </div>
