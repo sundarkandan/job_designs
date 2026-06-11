@@ -27,7 +27,7 @@
   }
 
   /* ── Load Google Maps script once ── */
-  const MAPS_API_KEY = import.meta.env.VITE_MAPS_API_KEY;
+  const MAPS_API_KEY =import.meta.env.VITE_MAPS_API_KEY;
 
   function loadGoogleMapsScript() {
     return new Promise((resolve, reject) => {
@@ -47,6 +47,7 @@
       }
       const script = document.createElement('script');
       script.src = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&libraries=places`;
+     
       script.async = true;
       script.defer = true;
       script.onload = () => resolve(window.google.maps);
