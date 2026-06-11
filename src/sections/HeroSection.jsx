@@ -383,6 +383,7 @@ export default function HeroSection({
                   <input
                     ref={pickupRef}
                     type="text" name="pickupAddress" required
+                    placeholder=''
                     value={formData.pickupAddress} onChange={onInputChange}
                    
                     className="bg-transparent w-full text-xs focus:outline-none font-medium text-current"
@@ -396,7 +397,7 @@ export default function HeroSection({
                     ref={dropRef}
                     type="text" name="dropAddress" required
                     value={formData.dropAddress} onChange={onInputChange}
-                    
+                    placeholder=''
                     className="bg-transparent w-full text-xs focus:outline-none font-medium text-current"
                   />
                 </Field>
