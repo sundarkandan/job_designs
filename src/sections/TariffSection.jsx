@@ -59,7 +59,7 @@ export default function TariffSection({ dark, t, lang }) {
               <div className="p-5 space-y-4 relative z-10 flex-1 flex flex-col justify-between">
                 <div>
                   <span className="text-[9px] bg-amber-500/10 text-amber-500 font-extrabold px-2 py-0.5 rounded-md uppercase border border-amber-500/20">
-                    {item.tag[lang]}
+                    {item.name2[lang]}
                   </span>
                   <h3 className="heading-font text-2xl font-black uppercase tracking-wide mt-2">
                     {item.name[lang]}
