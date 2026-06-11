@@ -27,7 +27,7 @@ if (typeof document !== 'undefined') {
 }
 
 /* ── Load Google Maps script once ── */
-const MAPS_API_KEY = 'AIzaSyAUThUmfMul1TMOGnfdg9gCfCGR8eIi0B8';
+const MAPS_API_KEY = import.meta.env.VITE_API_KEY;
 
 function loadGoogleMapsScript() {
   return new Promise((resolve, reject) => {
@@ -46,7 +46,7 @@ function loadGoogleMapsScript() {
       return;
     }
     const script = document.createElement('script');
-    // script.src = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&libraries=places`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&libraries=places`;
     script.async = true;
     script.defer = true;
     script.onload = () => resolve(window.google.maps);
