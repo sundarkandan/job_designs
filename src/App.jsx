@@ -130,12 +130,12 @@ export default function App() {
       localStorage synchronously, the loader renders with the correct theme
       on the very first paint.
     */
-    const loaderBg   = dark ? '#09090b' : '#fcfbf7';
-    const loaderText = dark ? '#f59e0b' : '#d97706';
-    const loaderSub  = dark ? '#52525b' : '#a1a1aa';
+    const loaderBg      = dark ? '#09090b' : '#fcfbf7';
+    const loaderText    = '#f59e0b';
+    const loaderSub     = dark ? '#52525b' : '#a1a1aa';
     const spinnerTrack  = dark ? '#27272a' : '#e4e4e7';
-    const spinnerAccent = dark ? '#f59e0b' : '#d97706';
-    const iconColor     = dark ? '#f59e0b' : '#d97706';
+    const spinnerAccent = '#f59e0b';
+    const iconColor     = '#f59e0b';
 
     return (
       <div
